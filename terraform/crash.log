@@ -1,0 +1,1506 @@
+2020/01/15 20:56:10 [INFO] Terraform version: 0.11.13  
+2020/01/15 20:56:10 [INFO] Go runtime version: go1.11.5
+2020/01/15 20:56:10 [INFO] CLI args: []string{"/Users/kepler/apps/terraform/terraform", "plan"}
+2020/01/15 20:56:10 [DEBUG] Attempting to open CLI config file: /Users/kepler/.terraformrc
+2020/01/15 20:56:10 [DEBUG] File doesn't exist, but doesn't need to. Ignoring.
+2020/01/15 20:56:10 [INFO] CLI command args: []string{"plan"}
+2020/01/15 20:56:10 [INFO] command: empty terraform config, returning nil
+2020/01/15 20:56:10 [DEBUG] command: no data state file found for backend config
+2020/01/15 20:56:10 [DEBUG] New state was assigned lineage "bedaad5e-dde5-bf14-1dd4-aec3a9e0d2df"
+2020/01/15 20:56:10 [INFO] command: backend initialized: <nil>
+2020/01/15 20:56:10 [DEBUG] checking for provider in "."
+2020/01/15 20:56:10 [DEBUG] checking for provider in "/Users/kepler/apps/terraform"
+2020/01/15 20:56:10 [DEBUG] checking for provider in ".terraform/plugins/darwin_amd64"
+2020/01/15 20:56:10 [DEBUG] found provider "terraform-provider-aws_v2.44.0_x4"
+2020/01/15 20:56:10 [DEBUG] found valid plugin: "aws", "2.44.0", "/Users/kepler/dvlp/tfm-autoencoders/terraform/.terraform/plugins/darwin_amd64/terraform-provider-aws_v2.44.0_x4"
+2020/01/15 20:56:10 [DEBUG] checking for provisioner in "."
+2020/01/15 20:56:10 [DEBUG] checking for provisioner in "/Users/kepler/apps/terraform"
+2020/01/15 20:56:10 [DEBUG] checking for provisioner in ".terraform/plugins/darwin_amd64"
+2020/01/15 20:56:10 [INFO] command: backend <nil> is not enhanced, wrapping in local
+2020/01/15 20:56:10 [INFO] backend/local: starting Plan operation
+2020/01/15 20:56:10 [DEBUG] New state was assigned lineage "e8da970b-167c-4a09-37eb-d85c1d7c3fe4"
+2020/01/15 20:56:10 [INFO] terraform: building graph: GraphTypeInput
+2020/01/15 20:56:10 [TRACE] ConfigTransformer: Starting for path: []
+2020/01/15 20:56:10 [TRACE] Graph after step *terraform.ConfigTransformer:
+
+aws_spot_instance_request.dl_worker - *terraform.NodeAbstractResource
+aws_vpc.main - *terraform.NodeAbstractResource
+2020/01/15 20:56:10 [TRACE] Graph after step *terraform.LocalTransformer:
+
+aws_spot_instance_request.dl_worker - *terraform.NodeAbstractResource
+aws_vpc.main - *terraform.NodeAbstractResource
+2020/01/15 20:56:10 [TRACE] Graph after step *terraform.OutputTransformer:
+
+aws_spot_instance_request.dl_worker - *terraform.NodeAbstractResource
+aws_vpc.main - *terraform.NodeAbstractResource
+2020/01/15 20:56:10 [TRACE] Graph after step *terraform.OrphanResourceTransformer:
+
+aws_spot_instance_request.dl_worker - *terraform.NodeAbstractResource
+aws_vpc.main - *terraform.NodeAbstractResource
+2020/01/15 20:56:10 [TRACE] Graph after step *terraform.OrphanOutputTransformer:
+
+aws_spot_instance_request.dl_worker - *terraform.NodeAbstractResource
+aws_vpc.main - *terraform.NodeAbstractResource
+2020/01/15 20:56:10 [TRACE] AttachResourceConfigTransformer: Beginning...
+2020/01/15 20:56:10 [TRACE] AttachResourceConfigTransformer: Attach resource config request: aws_vpc.main
+2020/01/15 20:56:10 [TRACE] Attaching resource config: &config.Resource{Mode:0, Name:"main", Type:"aws_vpc", RawCount:(*config.RawConfig)(0xc000416690), RawConfig:(*config.RawConfig)(0xc000416620), Provisioners:[]*config.Provisioner(nil), Provider:"", DependsOn:[]string(nil), Lifecycle:config.ResourceLifecycle{CreateBeforeDestroy:false, PreventDestroy:false, IgnoreChanges:[]string(nil)}}
+2020/01/15 20:56:10 [TRACE] AttachResourceConfigTransformer: Attach resource config request: aws_spot_instance_request.dl_worker
+2020/01/15 20:56:10 [TRACE] Attaching resource config: &config.Resource{Mode:0, Name:"dl_worker", Type:"aws_spot_instance_request", RawCount:(*config.RawConfig)(0xc0004164d0), RawConfig:(*config.RawConfig)(0xc000416310), Provisioners:[]*config.Provisioner(nil), Provider:"", DependsOn:[]string(nil), Lifecycle:config.ResourceLifecycle{CreateBeforeDestroy:false, PreventDestroy:false, IgnoreChanges:[]string(nil)}}
+2020/01/15 20:56:10 [TRACE] Graph after step *terraform.AttachResourceConfigTransformer:
+
+aws_spot_instance_request.dl_worker - *terraform.NodeAbstractResource
+aws_vpc.main - *terraform.NodeAbstractResource
+2020/01/15 20:56:10 [DEBUG] Resource state not found for "aws_vpc.main": aws_vpc.main
+2020/01/15 20:56:10 [DEBUG] Resource state not found for "aws_spot_instance_request.dl_worker": aws_spot_instance_request.dl_worker
+2020/01/15 20:56:10 [TRACE] Graph after step *terraform.AttachStateTransformer:
+
+aws_spot_instance_request.dl_worker - *terraform.NodeAbstractResource
+aws_vpc.main - *terraform.NodeAbstractResource
+2020/01/15 20:56:10 [TRACE] Graph after step *terraform.RootVariableTransformer:
+
+aws_spot_instance_request.dl_worker - *terraform.NodeAbstractResource
+aws_vpc.main - *terraform.NodeAbstractResource
+var.ami_id - *terraform.NodeRootVariable
+var.aws_region - *terraform.NodeRootVariable
+var.instance_type - *terraform.NodeRootVariable
+var.spot_price - *terraform.NodeRootVariable
+2020/01/15 20:56:10 [TRACE] ProviderConfigTransformer: Starting for path: []
+2020/01/15 20:56:10 [TRACE] Attach provider request: []string{} aws
+2020/01/15 20:56:10 [TRACE] Attaching provider config: *config.ProviderConfig{Name:"aws", Alias:"", Version:"~> 2.0", RawConfig:(*config.RawConfig)(0xc000416fc0)}
+2020/01/15 20:56:10 [TRACE] Graph after step *terraform.ProviderConfigTransformer:
+
+aws_spot_instance_request.dl_worker - *terraform.NodeAbstractResource
+aws_vpc.main - *terraform.NodeAbstractResource
+provider.aws - *terraform.NodeApplyableProvider
+var.ami_id - *terraform.NodeRootVariable
+var.aws_region - *terraform.NodeRootVariable
+var.instance_type - *terraform.NodeRootVariable
+var.spot_price - *terraform.NodeRootVariable
+2020/01/15 20:56:10 [TRACE] Graph after step *terraform.MissingProviderTransformer:
+
+aws_spot_instance_request.dl_worker - *terraform.NodeAbstractResource
+aws_vpc.main - *terraform.NodeAbstractResource
+provider.aws - *terraform.NodeApplyableProvider
+var.ami_id - *terraform.NodeRootVariable
+var.aws_region - *terraform.NodeRootVariable
+var.instance_type - *terraform.NodeRootVariable
+var.spot_price - *terraform.NodeRootVariable
+2020/01/15 20:56:10 [DEBUG] resource aws_spot_instance_request.dl_worker using provider provider.aws
+2020/01/15 20:56:10 [DEBUG] resource aws_vpc.main using provider provider.aws
+2020/01/15 20:56:10 [TRACE] Graph after step *terraform.ProviderTransformer:
+
+aws_spot_instance_request.dl_worker - *terraform.NodeAbstractResource
+  provider.aws - *terraform.NodeApplyableProvider
+aws_vpc.main - *terraform.NodeAbstractResource
+  provider.aws - *terraform.NodeApplyableProvider
+provider.aws - *terraform.NodeApplyableProvider
+var.ami_id - *terraform.NodeRootVariable
+var.aws_region - *terraform.NodeRootVariable
+var.instance_type - *terraform.NodeRootVariable
+var.spot_price - *terraform.NodeRootVariable
+2020/01/15 20:56:10 [TRACE] Graph after step *terraform.PruneProviderTransformer:
+
+aws_spot_instance_request.dl_worker - *terraform.NodeAbstractResource
+  provider.aws - *terraform.NodeApplyableProvider
+aws_vpc.main - *terraform.NodeAbstractResource
+  provider.aws - *terraform.NodeApplyableProvider
+provider.aws - *terraform.NodeApplyableProvider
+var.ami_id - *terraform.NodeRootVariable
+var.aws_region - *terraform.NodeRootVariable
+var.instance_type - *terraform.NodeRootVariable
+var.spot_price - *terraform.NodeRootVariable
+2020/01/15 20:56:10 [TRACE] Graph after step *terraform.ParentProviderTransformer:
+
+aws_spot_instance_request.dl_worker - *terraform.NodeAbstractResource
+  provider.aws - *terraform.NodeApplyableProvider
+aws_vpc.main - *terraform.NodeAbstractResource
+  provider.aws - *terraform.NodeApplyableProvider
+provider.aws - *terraform.NodeApplyableProvider
+var.ami_id - *terraform.NodeRootVariable
+var.aws_region - *terraform.NodeRootVariable
+var.instance_type - *terraform.NodeRootVariable
+var.spot_price - *terraform.NodeRootVariable
+2020/01/15 20:56:10 [TRACE] Graph after step *terraform.graphTransformerMulti:
+
+aws_spot_instance_request.dl_worker - *terraform.NodeAbstractResource
+  provider.aws - *terraform.NodeApplyableProvider
+aws_vpc.main - *terraform.NodeAbstractResource
+  provider.aws - *terraform.NodeApplyableProvider
+provider.aws - *terraform.NodeApplyableProvider
+var.ami_id - *terraform.NodeRootVariable
+var.aws_region - *terraform.NodeRootVariable
+var.instance_type - *terraform.NodeRootVariable
+var.spot_price - *terraform.NodeRootVariable
+2020/01/15 20:56:10 [TRACE] Graph after step *terraform.ModuleVariableTransformer:
+
+aws_spot_instance_request.dl_worker - *terraform.NodeAbstractResource
+  provider.aws - *terraform.NodeApplyableProvider
+aws_vpc.main - *terraform.NodeAbstractResource
+  provider.aws - *terraform.NodeApplyableProvider
+provider.aws - *terraform.NodeApplyableProvider
+var.ami_id - *terraform.NodeRootVariable
+var.aws_region - *terraform.NodeRootVariable
+var.instance_type - *terraform.NodeRootVariable
+var.spot_price - *terraform.NodeRootVariable
+2020/01/15 20:56:10 [TRACE] Graph after step *terraform.RemovedModuleTransformer:
+
+aws_spot_instance_request.dl_worker - *terraform.NodeAbstractResource
+  provider.aws - *terraform.NodeApplyableProvider
+aws_vpc.main - *terraform.NodeAbstractResource
+  provider.aws - *terraform.NodeApplyableProvider
+provider.aws - *terraform.NodeApplyableProvider
+var.ami_id - *terraform.NodeRootVariable
+var.aws_region - *terraform.NodeRootVariable
+var.instance_type - *terraform.NodeRootVariable
+var.spot_price - *terraform.NodeRootVariable
+2020/01/15 20:56:10 [DEBUG] ReferenceTransformer: "aws_spot_instance_request.dl_worker" references: [var.ami_id var.instance_type var.spot_price]
+2020/01/15 20:56:10 [DEBUG] ReferenceTransformer: "aws_vpc.main" references: []
+2020/01/15 20:56:10 [DEBUG] ReferenceTransformer: "var.ami_id" references: []
+2020/01/15 20:56:10 [DEBUG] ReferenceTransformer: "var.aws_region" references: []
+2020/01/15 20:56:10 [DEBUG] ReferenceTransformer: "var.spot_price" references: []
+2020/01/15 20:56:10 [DEBUG] ReferenceTransformer: "var.instance_type" references: []
+2020/01/15 20:56:10 [DEBUG] ReferenceTransformer: "provider.aws" references: []
+2020/01/15 20:56:10 [TRACE] Graph after step *terraform.ReferenceTransformer:
+
+aws_spot_instance_request.dl_worker - *terraform.NodeAbstractResource
+  provider.aws - *terraform.NodeApplyableProvider
+  var.ami_id - *terraform.NodeRootVariable
+  var.instance_type - *terraform.NodeRootVariable
+  var.spot_price - *terraform.NodeRootVariable
+aws_vpc.main - *terraform.NodeAbstractResource
+  provider.aws - *terraform.NodeApplyableProvider
+provider.aws - *terraform.NodeApplyableProvider
+var.ami_id - *terraform.NodeRootVariable
+var.aws_region - *terraform.NodeRootVariable
+var.instance_type - *terraform.NodeRootVariable
+var.spot_price - *terraform.NodeRootVariable
+2020/01/15 20:56:10 [TRACE] Graph after step *terraform.CountBoundaryTransformer:
+
+aws_spot_instance_request.dl_worker - *terraform.NodeAbstractResource
+  provider.aws - *terraform.NodeApplyableProvider
+  var.ami_id - *terraform.NodeRootVariable
+  var.instance_type - *terraform.NodeRootVariable
+  var.spot_price - *terraform.NodeRootVariable
+aws_vpc.main - *terraform.NodeAbstractResource
+  provider.aws - *terraform.NodeApplyableProvider
+meta.count-boundary (count boundary fixup) - *terraform.NodeCountBoundary
+  aws_spot_instance_request.dl_worker - *terraform.NodeAbstractResource
+  aws_vpc.main - *terraform.NodeAbstractResource
+  provider.aws - *terraform.NodeApplyableProvider
+  var.ami_id - *terraform.NodeRootVariable
+  var.aws_region - *terraform.NodeRootVariable
+  var.instance_type - *terraform.NodeRootVariable
+  var.spot_price - *terraform.NodeRootVariable
+provider.aws - *terraform.NodeApplyableProvider
+var.ami_id - *terraform.NodeRootVariable
+var.aws_region - *terraform.NodeRootVariable
+var.instance_type - *terraform.NodeRootVariable
+var.spot_price - *terraform.NodeRootVariable
+2020/01/15 20:56:10 [TRACE] Graph after step *terraform.TargetsTransformer:
+
+aws_spot_instance_request.dl_worker - *terraform.NodeAbstractResource
+  provider.aws - *terraform.NodeApplyableProvider
+  var.ami_id - *terraform.NodeRootVariable
+  var.instance_type - *terraform.NodeRootVariable
+  var.spot_price - *terraform.NodeRootVariable
+aws_vpc.main - *terraform.NodeAbstractResource
+  provider.aws - *terraform.NodeApplyableProvider
+meta.count-boundary (count boundary fixup) - *terraform.NodeCountBoundary
+  aws_spot_instance_request.dl_worker - *terraform.NodeAbstractResource
+  aws_vpc.main - *terraform.NodeAbstractResource
+  provider.aws - *terraform.NodeApplyableProvider
+  var.ami_id - *terraform.NodeRootVariable
+  var.aws_region - *terraform.NodeRootVariable
+  var.instance_type - *terraform.NodeRootVariable
+  var.spot_price - *terraform.NodeRootVariable
+provider.aws - *terraform.NodeApplyableProvider
+var.ami_id - *terraform.NodeRootVariable
+var.aws_region - *terraform.NodeRootVariable
+var.instance_type - *terraform.NodeRootVariable
+var.spot_price - *terraform.NodeRootVariable
+2020/01/15 20:56:10 [TRACE] Graph after step *terraform.CloseProviderTransformer:
+
+aws_spot_instance_request.dl_worker - *terraform.NodeAbstractResource
+  provider.aws - *terraform.NodeApplyableProvider
+  var.ami_id - *terraform.NodeRootVariable
+  var.instance_type - *terraform.NodeRootVariable
+  var.spot_price - *terraform.NodeRootVariable
+aws_vpc.main - *terraform.NodeAbstractResource
+  provider.aws - *terraform.NodeApplyableProvider
+meta.count-boundary (count boundary fixup) - *terraform.NodeCountBoundary
+  aws_spot_instance_request.dl_worker - *terraform.NodeAbstractResource
+  aws_vpc.main - *terraform.NodeAbstractResource
+  provider.aws - *terraform.NodeApplyableProvider
+  var.ami_id - *terraform.NodeRootVariable
+  var.aws_region - *terraform.NodeRootVariable
+  var.instance_type - *terraform.NodeRootVariable
+  var.spot_price - *terraform.NodeRootVariable
+provider.aws - *terraform.NodeApplyableProvider
+provider.aws (close) - *terraform.graphNodeCloseProvider
+  aws_spot_instance_request.dl_worker - *terraform.NodeAbstractResource
+  aws_vpc.main - *terraform.NodeAbstractResource
+  provider.aws - *terraform.NodeApplyableProvider
+var.ami_id - *terraform.NodeRootVariable
+var.aws_region - *terraform.NodeRootVariable
+var.instance_type - *terraform.NodeRootVariable
+var.spot_price - *terraform.NodeRootVariable
+2020/01/15 20:56:10 [TRACE] Graph after step *terraform.CloseProvisionerTransformer:
+
+aws_spot_instance_request.dl_worker - *terraform.NodeAbstractResource
+  provider.aws - *terraform.NodeApplyableProvider
+  var.ami_id - *terraform.NodeRootVariable
+  var.instance_type - *terraform.NodeRootVariable
+  var.spot_price - *terraform.NodeRootVariable
+aws_vpc.main - *terraform.NodeAbstractResource
+  provider.aws - *terraform.NodeApplyableProvider
+meta.count-boundary (count boundary fixup) - *terraform.NodeCountBoundary
+  aws_spot_instance_request.dl_worker - *terraform.NodeAbstractResource
+  aws_vpc.main - *terraform.NodeAbstractResource
+  provider.aws - *terraform.NodeApplyableProvider
+  var.ami_id - *terraform.NodeRootVariable
+  var.aws_region - *terraform.NodeRootVariable
+  var.instance_type - *terraform.NodeRootVariable
+  var.spot_price - *terraform.NodeRootVariable
+provider.aws - *terraform.NodeApplyableProvider
+provider.aws (close) - *terraform.graphNodeCloseProvider
+  aws_spot_instance_request.dl_worker - *terraform.NodeAbstractResource
+  aws_vpc.main - *terraform.NodeAbstractResource
+  provider.aws - *terraform.NodeApplyableProvider
+var.ami_id - *terraform.NodeRootVariable
+var.aws_region - *terraform.NodeRootVariable
+var.instance_type - *terraform.NodeRootVariable
+var.spot_price - *terraform.NodeRootVariable
+2020/01/15 20:56:10 [TRACE] Graph after step *terraform.RootTransformer:
+
+aws_spot_instance_request.dl_worker - *terraform.NodeAbstractResource
+  provider.aws - *terraform.NodeApplyableProvider
+  var.ami_id - *terraform.NodeRootVariable
+  var.instance_type - *terraform.NodeRootVariable
+  var.spot_price - *terraform.NodeRootVariable
+aws_vpc.main - *terraform.NodeAbstractResource
+  provider.aws - *terraform.NodeApplyableProvider
+meta.count-boundary (count boundary fixup) - *terraform.NodeCountBoundary
+  aws_spot_instance_request.dl_worker - *terraform.NodeAbstractResource
+  aws_vpc.main - *terraform.NodeAbstractResource
+  provider.aws - *terraform.NodeApplyableProvider
+  var.ami_id - *terraform.NodeRootVariable
+  var.aws_region - *terraform.NodeRootVariable
+  var.instance_type - *terraform.NodeRootVariable
+  var.spot_price - *terraform.NodeRootVariable
+provider.aws - *terraform.NodeApplyableProvider
+provider.aws (close) - *terraform.graphNodeCloseProvider
+  aws_spot_instance_request.dl_worker - *terraform.NodeAbstractResource
+  aws_vpc.main - *terraform.NodeAbstractResource
+  provider.aws - *terraform.NodeApplyableProvider
+root - terraform.graphNodeRoot
+  meta.count-boundary (count boundary fixup) - *terraform.NodeCountBoundary
+  provider.aws (close) - *terraform.graphNodeCloseProvider
+var.ami_id - *terraform.NodeRootVariable
+var.aws_region - *terraform.NodeRootVariable
+var.instance_type - *terraform.NodeRootVariable
+var.spot_price - *terraform.NodeRootVariable
+2020/01/15 20:56:10 [TRACE] Graph after step *terraform.TransitiveReductionTransformer:
+
+aws_spot_instance_request.dl_worker - *terraform.NodeAbstractResource
+  provider.aws - *terraform.NodeApplyableProvider
+  var.ami_id - *terraform.NodeRootVariable
+  var.instance_type - *terraform.NodeRootVariable
+  var.spot_price - *terraform.NodeRootVariable
+aws_vpc.main - *terraform.NodeAbstractResource
+  provider.aws - *terraform.NodeApplyableProvider
+meta.count-boundary (count boundary fixup) - *terraform.NodeCountBoundary
+  aws_spot_instance_request.dl_worker - *terraform.NodeAbstractResource
+  aws_vpc.main - *terraform.NodeAbstractResource
+  var.aws_region - *terraform.NodeRootVariable
+provider.aws - *terraform.NodeApplyableProvider
+provider.aws (close) - *terraform.graphNodeCloseProvider
+  aws_spot_instance_request.dl_worker - *terraform.NodeAbstractResource
+  aws_vpc.main - *terraform.NodeAbstractResource
+root - terraform.graphNodeRoot
+  meta.count-boundary (count boundary fixup) - *terraform.NodeCountBoundary
+  provider.aws (close) - *terraform.graphNodeCloseProvider
+var.ami_id - *terraform.NodeRootVariable
+var.aws_region - *terraform.NodeRootVariable
+var.instance_type - *terraform.NodeRootVariable
+var.spot_price - *terraform.NodeRootVariable
+2020/01/15 20:56:10 [DEBUG] Starting graph walk: walkInput
+2020/01/15 20:56:10 [TRACE] dag/walk: added new vertex: "provider.aws"
+2020/01/15 20:56:10 [TRACE] dag/walk: added new vertex: "var.spot_price"
+2020/01/15 20:56:10 [TRACE] dag/walk: added new vertex: "var.ami_id"
+2020/01/15 20:56:10 [TRACE] dag/walk: added new vertex: "var.aws_region"
+2020/01/15 20:56:10 [TRACE] dag/walk: added new vertex: "meta.count-boundary (count boundary fixup)"
+2020/01/15 20:56:10 [TRACE] dag/walk: added new vertex: "provider.aws (close)"
+2020/01/15 20:56:10 [TRACE] dag/walk: added new vertex: "aws_spot_instance_request.dl_worker"
+2020/01/15 20:56:10 [TRACE] dag/walk: added new vertex: "aws_vpc.main"
+2020/01/15 20:56:10 [TRACE] dag/walk: added new vertex: "var.instance_type"
+2020/01/15 20:56:10 [TRACE] dag/walk: added new vertex: "root"
+2020/01/15 20:56:10 [TRACE] dag/walk: added edge: "aws_spot_instance_request.dl_worker" waiting on "var.spot_price"
+2020/01/15 20:56:10 [TRACE] dag/walk: added edge: "aws_vpc.main" waiting on "provider.aws"
+2020/01/15 20:56:10 [TRACE] dag/walk: added edge: "aws_spot_instance_request.dl_worker" waiting on "var.instance_type"
+2020/01/15 20:56:10 [TRACE] dag/walk: added edge: "meta.count-boundary (count boundary fixup)" waiting on "aws_vpc.main"
+2020/01/15 20:56:10 [TRACE] dag/walk: added edge: "root" waiting on "provider.aws (close)"
+2020/01/15 20:56:10 [TRACE] dag/walk: added edge: "aws_spot_instance_request.dl_worker" waiting on "var.ami_id"
+2020/01/15 20:56:10 [TRACE] dag/walk: added edge: "root" waiting on "meta.count-boundary (count boundary fixup)"
+2020/01/15 20:56:10 [TRACE] dag/walk: added edge: "meta.count-boundary (count boundary fixup)" waiting on "var.aws_region"
+2020/01/15 20:56:10 [TRACE] dag/walk: added edge: "provider.aws (close)" waiting on "aws_spot_instance_request.dl_worker"
+2020/01/15 20:56:10 [TRACE] dag/walk: added edge: "provider.aws (close)" waiting on "aws_vpc.main"
+2020/01/15 20:56:10 [TRACE] dag/walk: added edge: "aws_spot_instance_request.dl_worker" waiting on "provider.aws"
+2020/01/15 20:56:10 [TRACE] dag/walk: added edge: "meta.count-boundary (count boundary fixup)" waiting on "aws_spot_instance_request.dl_worker"
+2020/01/15 20:56:10 [TRACE] dag/walk: dependencies changed for "aws_spot_instance_request.dl_worker", sending new deps
+2020/01/15 20:56:10 [TRACE] dag/walk: dependencies changed for "aws_vpc.main", sending new deps
+2020/01/15 20:56:10 [TRACE] dag/walk: dependencies changed for "meta.count-boundary (count boundary fixup)", sending new deps
+2020/01/15 20:56:10 [TRACE] dag/walk: dependencies changed for "root", sending new deps
+2020/01/15 20:56:10 [TRACE] dag/walk: dependencies changed for "provider.aws (close)", sending new deps
+2020/01/15 20:56:10 [TRACE] dag/walk: walking "var.ami_id"
+2020/01/15 20:56:10 [TRACE] vertex 'root.var.ami_id': walking
+2020/01/15 20:56:10 [TRACE] dag/walk: walking "var.instance_type"
+2020/01/15 20:56:10 [TRACE] dag/walk: walking "provider.aws"
+2020/01/15 20:56:10 [TRACE] vertex 'root.provider.aws': walking
+2020/01/15 20:56:10 [TRACE] vertex 'root.provider.aws': evaluating
+2020/01/15 20:56:10 [TRACE] dag/walk: walking "var.spot_price"
+2020/01/15 20:56:10 [TRACE] vertex 'root.var.instance_type': walking
+2020/01/15 20:56:10 [TRACE] [walkInput] Entering eval tree: provider.aws
+2020/01/15 20:56:10 [TRACE] vertex 'root.var.spot_price': walking
+2020/01/15 20:56:10 [TRACE] dag/walk: walking "var.aws_region"
+2020/01/15 20:56:10 [TRACE] vertex 'root.var.aws_region': walking
+2020/01/15 20:56:10 [TRACE] root: eval: *terraform.EvalSequence
+2020/01/15 20:56:10 [TRACE] root: eval: *terraform.EvalInitProvider
+2020-01-15T20:56:10.753+0100 [DEBUG] plugin: starting plugin: path=/Users/kepler/dvlp/tfm-autoencoders/terraform/.terraform/plugins/darwin_amd64/terraform-provider-aws_v2.44.0_x4 args=[/Users/kepler/dvlp/tfm-autoencoders/terraform/.terraform/plugins/darwin_amd64/terraform-provider-aws_v2.44.0_x4]
+2020-01-15T20:56:10.765+0100 [DEBUG] plugin: waiting for RPC address: path=/Users/kepler/dvlp/tfm-autoencoders/terraform/.terraform/plugins/darwin_amd64/terraform-provider-aws_v2.44.0_x4
+2020-01-15T20:56:10.788+0100 [DEBUG] plugin.terraform-provider-aws_v2.44.0_x4: plugin address: timestamp=2020-01-15T20:56:10.787+0100 address=/var/folders/rc/159xg5_949l664qzqvf84b4w0000gn/T/plugin232165249 network=unix
+2020/01/15 20:56:10 [TRACE] root: eval: *terraform.EvalOpFilter
+2020/01/15 20:56:10 [TRACE] root: eval: *terraform.EvalSequence
+2020/01/15 20:56:10 [TRACE] root: eval: *terraform.EvalGetProvider
+2020/01/15 20:56:10 [TRACE] root: eval: *terraform.EvalInterpolateProvider
+2020/01/15 20:56:10 [TRACE] root: eval: *terraform.EvalBuildProviderConfig
+2020/01/15 20:56:10 [TRACE] root: eval: *terraform.EvalInputProvider
+2020/01/15 20:56:10 [TRACE] root: eval: terraform.EvalNoop
+2020/01/15 20:56:10 [TRACE] root: eval: terraform.EvalNoop
+2020/01/15 20:56:10 [TRACE] root: eval: terraform.EvalNoop
+2020/01/15 20:56:10 [TRACE] [walkInput] Exiting eval tree: provider.aws
+2020/01/15 20:56:10 [TRACE] dag/walk: walking "aws_vpc.main"
+2020/01/15 20:56:10 [TRACE] vertex 'root.aws_vpc.main': walking
+2020/01/15 20:56:10 [TRACE] dag/walk: walking "aws_spot_instance_request.dl_worker"
+2020/01/15 20:56:10 [TRACE] vertex 'root.aws_spot_instance_request.dl_worker': walking
+2020/01/15 20:56:10 [TRACE] dag/walk: walking "provider.aws (close)"
+2020/01/15 20:56:10 [TRACE] vertex 'root.provider.aws (close)': walking
+2020/01/15 20:56:10 [TRACE] vertex 'root.provider.aws (close)': evaluating
+2020/01/15 20:56:10 [TRACE] dag/walk: walking "meta.count-boundary (count boundary fixup)"
+2020/01/15 20:56:10 [TRACE] vertex 'root.meta.count-boundary (count boundary fixup)': walking
+2020/01/15 20:56:10 [TRACE] [walkInput] Entering eval tree: provider.aws (close)
+2020/01/15 20:56:10 [TRACE] root: eval: *terraform.EvalCloseProvider
+2020/01/15 20:56:10 [TRACE] vertex 'root.meta.count-boundary (count boundary fixup)': evaluating
+2020/01/15 20:56:10 [TRACE] [walkInput] Entering eval tree: meta.count-boundary (count boundary fixup)
+2020/01/15 20:56:10 [TRACE] root: eval: *terraform.EvalCountFixZeroOneBoundaryGlobal
+2020/01/15 20:56:10 [TRACE] [walkInput] Exiting eval tree: meta.count-boundary (count boundary fixup)
+2020/01/15 20:56:10 [TRACE] [walkInput] Exiting eval tree: provider.aws (close)
+2020/01/15 20:56:10 [TRACE] dag/walk: walking "root"
+2020/01/15 20:56:10 [TRACE] vertex 'root.root': walking
+2020/01/15 20:56:10 [INFO] terraform: building graph: GraphTypeValidate
+2020/01/15 20:56:10 [TRACE] ConfigTransformer: Starting for path: []
+2020/01/15 20:56:10 [TRACE] Graph after step *terraform.ConfigTransformer:
+
+aws_spot_instance_request.dl_worker - *terraform.NodeValidatableResource
+aws_vpc.main - *terraform.NodeValidatableResource
+2020/01/15 20:56:10 [TRACE] Graph after step *terraform.LocalTransformer:
+
+aws_spot_instance_request.dl_worker - *terraform.NodeValidatableResource
+aws_vpc.main - *terraform.NodeValidatableResource
+2020/01/15 20:56:10 [TRACE] Graph after step *terraform.OutputTransformer:
+
+aws_spot_instance_request.dl_worker - *terraform.NodeValidatableResource
+aws_vpc.main - *terraform.NodeValidatableResource
+2020/01/15 20:56:10 [TRACE] Graph after step *terraform.OrphanResourceTransformer:
+
+aws_spot_instance_request.dl_worker - *terraform.NodeValidatableResource
+aws_vpc.main - *terraform.NodeValidatableResource
+2020/01/15 20:56:10 [TRACE] Graph after step *terraform.OrphanOutputTransformer:
+
+aws_spot_instance_request.dl_worker - *terraform.NodeValidatableResource
+aws_vpc.main - *terraform.NodeValidatableResource
+2020/01/15 20:56:10 [TRACE] AttachResourceConfigTransformer: Beginning...
+2020/01/15 20:56:10 [TRACE] AttachResourceConfigTransformer: Attach resource config request: aws_spot_instance_request.dl_worker
+2020/01/15 20:56:10 [TRACE] Attaching resource config: &config.Resource{Mode:0, Name:"dl_worker", Type:"aws_spot_instance_request", RawCount:(*config.RawConfig)(0xc0004164d0), RawConfig:(*config.RawConfig)(0xc000416310), Provisioners:[]*config.Provisioner(nil), Provider:"", DependsOn:[]string(nil), Lifecycle:config.ResourceLifecycle{CreateBeforeDestroy:false, PreventDestroy:false, IgnoreChanges:[]string(nil)}}
+2020/01/15 20:56:10 [TRACE] AttachResourceConfigTransformer: Attach resource config request: aws_vpc.main
+2020/01/15 20:56:10 [TRACE] Attaching resource config: &config.Resource{Mode:0, Name:"main", Type:"aws_vpc", RawCount:(*config.RawConfig)(0xc000416690), RawConfig:(*config.RawConfig)(0xc000416620), Provisioners:[]*config.Provisioner(nil), Provider:"", DependsOn:[]string(nil), Lifecycle:config.ResourceLifecycle{CreateBeforeDestroy:false, PreventDestroy:false, IgnoreChanges:[]string(nil)}}
+2020/01/15 20:56:10 [TRACE] Graph after step *terraform.AttachResourceConfigTransformer:
+
+aws_spot_instance_request.dl_worker - *terraform.NodeValidatableResource
+aws_vpc.main - *terraform.NodeValidatableResource
+2020/01/15 20:56:10 [DEBUG] Resource state not found for "aws_vpc.main": aws_vpc.main
+2020/01/15 20:56:10 [DEBUG] Resource state not found for "aws_spot_instance_request.dl_worker": aws_spot_instance_request.dl_worker
+2020/01/15 20:56:10 [TRACE] Graph after step *terraform.AttachStateTransformer:
+
+aws_spot_instance_request.dl_worker - *terraform.NodeValidatableResource
+aws_vpc.main - *terraform.NodeValidatableResource
+2020/01/15 20:56:10 [TRACE] Graph after step *terraform.RootVariableTransformer:
+
+aws_spot_instance_request.dl_worker - *terraform.NodeValidatableResource
+aws_vpc.main - *terraform.NodeValidatableResource
+var.ami_id - *terraform.NodeRootVariable
+var.aws_region - *terraform.NodeRootVariable
+var.instance_type - *terraform.NodeRootVariable
+var.spot_price - *terraform.NodeRootVariable
+2020/01/15 20:56:10 [TRACE] ProviderConfigTransformer: Starting for path: []
+2020/01/15 20:56:10 [TRACE] Attach provider request: []string{} aws
+2020/01/15 20:56:10 [TRACE] Attaching provider config: *config.ProviderConfig{Name:"aws", Alias:"", Version:"~> 2.0", RawConfig:(*config.RawConfig)(0xc000416fc0)}
+2020/01/15 20:56:10 [TRACE] Graph after step *terraform.ProviderConfigTransformer:
+
+aws_spot_instance_request.dl_worker - *terraform.NodeValidatableResource
+aws_vpc.main - *terraform.NodeValidatableResource
+provider.aws - *terraform.NodeApplyableProvider
+var.ami_id - *terraform.NodeRootVariable
+var.aws_region - *terraform.NodeRootVariable
+var.instance_type - *terraform.NodeRootVariable
+var.spot_price - *terraform.NodeRootVariable
+2020/01/15 20:56:10 [TRACE] Graph after step *terraform.MissingProviderTransformer:
+
+aws_spot_instance_request.dl_worker - *terraform.NodeValidatableResource
+aws_vpc.main - *terraform.NodeValidatableResource
+provider.aws - *terraform.NodeApplyableProvider
+var.ami_id - *terraform.NodeRootVariable
+var.aws_region - *terraform.NodeRootVariable
+var.instance_type - *terraform.NodeRootVariable
+var.spot_price - *terraform.NodeRootVariable
+2020/01/15 20:56:10 [DEBUG] resource aws_spot_instance_request.dl_worker using provider provider.aws
+2020/01/15 20:56:10 [DEBUG] resource aws_vpc.main using provider provider.aws
+2020/01/15 20:56:10 [TRACE] Graph after step *terraform.ProviderTransformer:
+
+aws_spot_instance_request.dl_worker - *terraform.NodeValidatableResource
+  provider.aws - *terraform.NodeApplyableProvider
+aws_vpc.main - *terraform.NodeValidatableResource
+  provider.aws - *terraform.NodeApplyableProvider
+provider.aws - *terraform.NodeApplyableProvider
+var.ami_id - *terraform.NodeRootVariable
+var.aws_region - *terraform.NodeRootVariable
+var.instance_type - *terraform.NodeRootVariable
+var.spot_price - *terraform.NodeRootVariable
+2020/01/15 20:56:10 [TRACE] Graph after step *terraform.PruneProviderTransformer:
+
+aws_spot_instance_request.dl_worker - *terraform.NodeValidatableResource
+  provider.aws - *terraform.NodeApplyableProvider
+aws_vpc.main - *terraform.NodeValidatableResource
+  provider.aws - *terraform.NodeApplyableProvider
+provider.aws - *terraform.NodeApplyableProvider
+var.ami_id - *terraform.NodeRootVariable
+var.aws_region - *terraform.NodeRootVariable
+var.instance_type - *terraform.NodeRootVariable
+var.spot_price - *terraform.NodeRootVariable
+2020/01/15 20:56:10 [TRACE] Graph after step *terraform.ParentProviderTransformer:
+
+aws_spot_instance_request.dl_worker - *terraform.NodeValidatableResource
+  provider.aws - *terraform.NodeApplyableProvider
+aws_vpc.main - *terraform.NodeValidatableResource
+  provider.aws - *terraform.NodeApplyableProvider
+provider.aws - *terraform.NodeApplyableProvider
+var.ami_id - *terraform.NodeRootVariable
+var.aws_region - *terraform.NodeRootVariable
+var.instance_type - *terraform.NodeRootVariable
+var.spot_price - *terraform.NodeRootVariable
+2020/01/15 20:56:10 [TRACE] Graph after step *terraform.graphTransformerMulti:
+
+aws_spot_instance_request.dl_worker - *terraform.NodeValidatableResource
+  provider.aws - *terraform.NodeApplyableProvider
+aws_vpc.main - *terraform.NodeValidatableResource
+  provider.aws - *terraform.NodeApplyableProvider
+provider.aws - *terraform.NodeApplyableProvider
+var.ami_id - *terraform.NodeRootVariable
+var.aws_region - *terraform.NodeRootVariable
+var.instance_type - *terraform.NodeRootVariable
+var.spot_price - *terraform.NodeRootVariable
+2020/01/15 20:56:10 [TRACE] Graph after step *terraform.MissingProvisionerTransformer:
+
+aws_spot_instance_request.dl_worker - *terraform.NodeValidatableResource
+  provider.aws - *terraform.NodeApplyableProvider
+aws_vpc.main - *terraform.NodeValidatableResource
+  provider.aws - *terraform.NodeApplyableProvider
+provider.aws - *terraform.NodeApplyableProvider
+var.ami_id - *terraform.NodeRootVariable
+var.aws_region - *terraform.NodeRootVariable
+var.instance_type - *terraform.NodeRootVariable
+var.spot_price - *terraform.NodeRootVariable
+2020/01/15 20:56:10 [TRACE] Graph after step *terraform.ProvisionerTransformer:
+
+aws_spot_instance_request.dl_worker - *terraform.NodeValidatableResource
+  provider.aws - *terraform.NodeApplyableProvider
+aws_vpc.main - *terraform.NodeValidatableResource
+  provider.aws - *terraform.NodeApplyableProvider
+provider.aws - *terraform.NodeApplyableProvider
+var.ami_id - *terraform.NodeRootVariable
+var.aws_region - *terraform.NodeRootVariable
+var.instance_type - *terraform.NodeRootVariable
+var.spot_price - *terraform.NodeRootVariable
+2020/01/15 20:56:10 [TRACE] Graph after step *terraform.graphTransformerMulti:
+
+aws_spot_instance_request.dl_worker - *terraform.NodeValidatableResource
+  provider.aws - *terraform.NodeApplyableProvider
+aws_vpc.main - *terraform.NodeValidatableResource
+  provider.aws - *terraform.NodeApplyableProvider
+provider.aws - *terraform.NodeApplyableProvider
+var.ami_id - *terraform.NodeRootVariable
+var.aws_region - *terraform.NodeRootVariable
+var.instance_type - *terraform.NodeRootVariable
+var.spot_price - *terraform.NodeRootVariable
+2020/01/15 20:56:10 [TRACE] Graph after step *terraform.ModuleVariableTransformer:
+
+aws_spot_instance_request.dl_worker - *terraform.NodeValidatableResource
+  provider.aws - *terraform.NodeApplyableProvider
+aws_vpc.main - *terraform.NodeValidatableResource
+  provider.aws - *terraform.NodeApplyableProvider
+provider.aws - *terraform.NodeApplyableProvider
+var.ami_id - *terraform.NodeRootVariable
+var.aws_region - *terraform.NodeRootVariable
+var.instance_type - *terraform.NodeRootVariable
+var.spot_price - *terraform.NodeRootVariable
+2020/01/15 20:56:10 [TRACE] Graph after step *terraform.RemovedModuleTransformer:
+
+aws_spot_instance_request.dl_worker - *terraform.NodeValidatableResource
+  provider.aws - *terraform.NodeApplyableProvider
+aws_vpc.main - *terraform.NodeValidatableResource
+  provider.aws - *terraform.NodeApplyableProvider
+provider.aws - *terraform.NodeApplyableProvider
+var.ami_id - *terraform.NodeRootVariable
+var.aws_region - *terraform.NodeRootVariable
+var.instance_type - *terraform.NodeRootVariable
+var.spot_price - *terraform.NodeRootVariable
+2020/01/15 20:56:10 [DEBUG] ReferenceTransformer: "aws_spot_instance_request.dl_worker" references: [var.ami_id var.instance_type var.spot_price]
+2020/01/15 20:56:10 [DEBUG] ReferenceTransformer: "aws_vpc.main" references: []
+2020/01/15 20:56:10 [DEBUG] ReferenceTransformer: "var.ami_id" references: []
+2020/01/15 20:56:10 [DEBUG] ReferenceTransformer: "var.aws_region" references: []
+2020/01/15 20:56:10 [DEBUG] ReferenceTransformer: "var.spot_price" references: []
+2020/01/15 20:56:10 [DEBUG] ReferenceTransformer: "var.instance_type" references: []
+2020/01/15 20:56:10 [DEBUG] ReferenceTransformer: "provider.aws" references: []
+2020/01/15 20:56:10 [TRACE] Graph after step *terraform.ReferenceTransformer:
+
+aws_spot_instance_request.dl_worker - *terraform.NodeValidatableResource
+  provider.aws - *terraform.NodeApplyableProvider
+  var.ami_id - *terraform.NodeRootVariable
+  var.instance_type - *terraform.NodeRootVariable
+  var.spot_price - *terraform.NodeRootVariable
+aws_vpc.main - *terraform.NodeValidatableResource
+  provider.aws - *terraform.NodeApplyableProvider
+provider.aws - *terraform.NodeApplyableProvider
+var.ami_id - *terraform.NodeRootVariable
+var.aws_region - *terraform.NodeRootVariable
+var.instance_type - *terraform.NodeRootVariable
+var.spot_price - *terraform.NodeRootVariable
+2020/01/15 20:56:10 [TRACE] Graph after step *terraform.CountBoundaryTransformer:
+
+aws_spot_instance_request.dl_worker - *terraform.NodeValidatableResource
+  provider.aws - *terraform.NodeApplyableProvider
+  var.ami_id - *terraform.NodeRootVariable
+  var.instance_type - *terraform.NodeRootVariable
+  var.spot_price - *terraform.NodeRootVariable
+aws_vpc.main - *terraform.NodeValidatableResource
+  provider.aws - *terraform.NodeApplyableProvider
+meta.count-boundary (count boundary fixup) - *terraform.NodeCountBoundary
+  aws_spot_instance_request.dl_worker - *terraform.NodeValidatableResource
+  aws_vpc.main - *terraform.NodeValidatableResource
+  provider.aws - *terraform.NodeApplyableProvider
+  var.ami_id - *terraform.NodeRootVariable
+  var.aws_region - *terraform.NodeRootVariable
+  var.instance_type - *terraform.NodeRootVariable
+  var.spot_price - *terraform.NodeRootVariable
+provider.aws - *terraform.NodeApplyableProvider
+var.ami_id - *terraform.NodeRootVariable
+var.aws_region - *terraform.NodeRootVariable
+var.instance_type - *terraform.NodeRootVariable
+var.spot_price - *terraform.NodeRootVariable
+2020/01/15 20:56:10 [TRACE] Graph after step *terraform.TargetsTransformer:
+
+aws_spot_instance_request.dl_worker - *terraform.NodeValidatableResource
+  provider.aws - *terraform.NodeApplyableProvider
+  var.ami_id - *terraform.NodeRootVariable
+  var.instance_type - *terraform.NodeRootVariable
+  var.spot_price - *terraform.NodeRootVariable
+aws_vpc.main - *terraform.NodeValidatableResource
+  provider.aws - *terraform.NodeApplyableProvider
+meta.count-boundary (count boundary fixup) - *terraform.NodeCountBoundary
+  aws_spot_instance_request.dl_worker - *terraform.NodeValidatableResource
+  aws_vpc.main - *terraform.NodeValidatableResource
+  provider.aws - *terraform.NodeApplyableProvider
+  var.ami_id - *terraform.NodeRootVariable
+  var.aws_region - *terraform.NodeRootVariable
+  var.instance_type - *terraform.NodeRootVariable
+  var.spot_price - *terraform.NodeRootVariable
+provider.aws - *terraform.NodeApplyableProvider
+var.ami_id - *terraform.NodeRootVariable
+var.aws_region - *terraform.NodeRootVariable
+var.instance_type - *terraform.NodeRootVariable
+var.spot_price - *terraform.NodeRootVariable
+2020/01/15 20:56:10 [TRACE] Graph after step *terraform.CloseProviderTransformer:
+
+aws_spot_instance_request.dl_worker - *terraform.NodeValidatableResource
+  provider.aws - *terraform.NodeApplyableProvider
+  var.ami_id - *terraform.NodeRootVariable
+  var.instance_type - *terraform.NodeRootVariable
+  var.spot_price - *terraform.NodeRootVariable
+aws_vpc.main - *terraform.NodeValidatableResource
+  provider.aws - *terraform.NodeApplyableProvider
+meta.count-boundary (count boundary fixup) - *terraform.NodeCountBoundary
+  aws_spot_instance_request.dl_worker - *terraform.NodeValidatableResource
+  aws_vpc.main - *terraform.NodeValidatableResource
+  provider.aws - *terraform.NodeApplyableProvider
+  var.ami_id - *terraform.NodeRootVariable
+  var.aws_region - *terraform.NodeRootVariable
+  var.instance_type - *terraform.NodeRootVariable
+  var.spot_price - *terraform.NodeRootVariable
+provider.aws - *terraform.NodeApplyableProvider
+provider.aws (close) - *terraform.graphNodeCloseProvider
+  aws_spot_instance_request.dl_worker - *terraform.NodeValidatableResource
+  aws_vpc.main - *terraform.NodeValidatableResource
+  provider.aws - *terraform.NodeApplyableProvider
+var.ami_id - *terraform.NodeRootVariable
+var.aws_region - *terraform.NodeRootVariable
+var.instance_type - *terraform.NodeRootVariable
+var.spot_price - *terraform.NodeRootVariable
+2020/01/15 20:56:10 [TRACE] Graph after step *terraform.CloseProvisionerTransformer:
+
+aws_spot_instance_request.dl_worker - *terraform.NodeValidatableResource
+  provider.aws - *terraform.NodeApplyableProvider
+  var.ami_id - *terraform.NodeRootVariable
+  var.instance_type - *terraform.NodeRootVariable
+  var.spot_price - *terraform.NodeRootVariable
+aws_vpc.main - *terraform.NodeValidatableResource
+  provider.aws - *terraform.NodeApplyableProvider
+meta.count-boundary (count boundary fixup) - *terraform.NodeCountBoundary
+  aws_spot_instance_request.dl_worker - *terraform.NodeValidatableResource
+  aws_vpc.main - *terraform.NodeValidatableResource
+  provider.aws - *terraform.NodeApplyableProvider
+  var.ami_id - *terraform.NodeRootVariable
+  var.aws_region - *terraform.NodeRootVariable
+  var.instance_type - *terraform.NodeRootVariable
+  var.spot_price - *terraform.NodeRootVariable
+provider.aws - *terraform.NodeApplyableProvider
+provider.aws (close) - *terraform.graphNodeCloseProvider
+  aws_spot_instance_request.dl_worker - *terraform.NodeValidatableResource
+  aws_vpc.main - *terraform.NodeValidatableResource
+  provider.aws - *terraform.NodeApplyableProvider
+var.ami_id - *terraform.NodeRootVariable
+var.aws_region - *terraform.NodeRootVariable
+var.instance_type - *terraform.NodeRootVariable
+var.spot_price - *terraform.NodeRootVariable
+2020/01/15 20:56:10 [TRACE] Graph after step *terraform.RootTransformer:
+
+aws_spot_instance_request.dl_worker - *terraform.NodeValidatableResource
+  provider.aws - *terraform.NodeApplyableProvider
+  var.ami_id - *terraform.NodeRootVariable
+  var.instance_type - *terraform.NodeRootVariable
+  var.spot_price - *terraform.NodeRootVariable
+aws_vpc.main - *terraform.NodeValidatableResource
+  provider.aws - *terraform.NodeApplyableProvider
+meta.count-boundary (count boundary fixup) - *terraform.NodeCountBoundary
+  aws_spot_instance_request.dl_worker - *terraform.NodeValidatableResource
+  aws_vpc.main - *terraform.NodeValidatableResource
+  provider.aws - *terraform.NodeApplyableProvider
+  var.ami_id - *terraform.NodeRootVariable
+  var.aws_region - *terraform.NodeRootVariable
+  var.instance_type - *terraform.NodeRootVariable
+  var.spot_price - *terraform.NodeRootVariable
+provider.aws - *terraform.NodeApplyableProvider
+provider.aws (close) - *terraform.graphNodeCloseProvider
+  aws_spot_instance_request.dl_worker - *terraform.NodeValidatableResource
+  aws_vpc.main - *terraform.NodeValidatableResource
+  provider.aws - *terraform.NodeApplyableProvider
+root - terraform.graphNodeRoot
+  meta.count-boundary (count boundary fixup) - *terraform.NodeCountBoundary
+  provider.aws (close) - *terraform.graphNodeCloseProvider
+var.ami_id - *terraform.NodeRootVariable
+var.aws_region - *terraform.NodeRootVariable
+var.instance_type - *terraform.NodeRootVariable
+var.spot_price - *terraform.NodeRootVariable
+2020/01/15 20:56:10 [TRACE] Graph after step *terraform.TransitiveReductionTransformer:
+
+aws_spot_instance_request.dl_worker - *terraform.NodeValidatableResource
+  provider.aws - *terraform.NodeApplyableProvider
+  var.ami_id - *terraform.NodeRootVariable
+  var.instance_type - *terraform.NodeRootVariable
+  var.spot_price - *terraform.NodeRootVariable
+aws_vpc.main - *terraform.NodeValidatableResource
+  provider.aws - *terraform.NodeApplyableProvider
+meta.count-boundary (count boundary fixup) - *terraform.NodeCountBoundary
+  aws_spot_instance_request.dl_worker - *terraform.NodeValidatableResource
+  aws_vpc.main - *terraform.NodeValidatableResource
+  var.aws_region - *terraform.NodeRootVariable
+provider.aws - *terraform.NodeApplyableProvider
+provider.aws (close) - *terraform.graphNodeCloseProvider
+  aws_spot_instance_request.dl_worker - *terraform.NodeValidatableResource
+  aws_vpc.main - *terraform.NodeValidatableResource
+root - terraform.graphNodeRoot
+  meta.count-boundary (count boundary fixup) - *terraform.NodeCountBoundary
+  provider.aws (close) - *terraform.graphNodeCloseProvider
+var.ami_id - *terraform.NodeRootVariable
+var.aws_region - *terraform.NodeRootVariable
+var.instance_type - *terraform.NodeRootVariable
+var.spot_price - *terraform.NodeRootVariable
+2020/01/15 20:56:10 [DEBUG] Starting graph walk: walkValidate
+2020/01/15 20:56:10 [TRACE] dag/walk: added new vertex: "var.spot_price"
+2020/01/15 20:56:10 [TRACE] dag/walk: added new vertex: "aws_spot_instance_request.dl_worker"
+2020/01/15 20:56:10 [TRACE] dag/walk: added new vertex: "var.ami_id"
+2020/01/15 20:56:10 [TRACE] dag/walk: added new vertex: "root"
+2020/01/15 20:56:10 [TRACE] dag/walk: added new vertex: "provider.aws"
+2020/01/15 20:56:10 [TRACE] dag/walk: added new vertex: "meta.count-boundary (count boundary fixup)"
+2020/01/15 20:56:10 [TRACE] dag/walk: added new vertex: "var.instance_type"
+2020/01/15 20:56:10 [TRACE] dag/walk: added new vertex: "provider.aws (close)"
+2020/01/15 20:56:10 [TRACE] dag/walk: added new vertex: "aws_vpc.main"
+2020/01/15 20:56:10 [TRACE] dag/walk: added new vertex: "var.aws_region"
+2020/01/15 20:56:10 [TRACE] dag/walk: added edge: "aws_vpc.main" waiting on "provider.aws"
+2020/01/15 20:56:10 [TRACE] dag/walk: added edge: "aws_spot_instance_request.dl_worker" waiting on "provider.aws"
+2020/01/15 20:56:10 [TRACE] dag/walk: added edge: "meta.count-boundary (count boundary fixup)" waiting on "aws_spot_instance_request.dl_worker"
+2020/01/15 20:56:10 [TRACE] dag/walk: added edge: "meta.count-boundary (count boundary fixup)" waiting on "aws_vpc.main"
+2020/01/15 20:56:10 [TRACE] dag/walk: added edge: "provider.aws (close)" waiting on "aws_vpc.main"
+2020/01/15 20:56:10 [TRACE] dag/walk: added edge: "meta.count-boundary (count boundary fixup)" waiting on "var.aws_region"
+2020/01/15 20:56:10 [TRACE] dag/walk: added edge: "provider.aws (close)" waiting on "aws_spot_instance_request.dl_worker"
+2020/01/15 20:56:10 [TRACE] dag/walk: added edge: "root" waiting on "meta.count-boundary (count boundary fixup)"
+2020/01/15 20:56:10 [TRACE] dag/walk: added edge: "aws_spot_instance_request.dl_worker" waiting on "var.ami_id"
+2020/01/15 20:56:10 [TRACE] dag/walk: added edge: "aws_spot_instance_request.dl_worker" waiting on "var.spot_price"
+2020/01/15 20:56:10 [TRACE] dag/walk: added edge: "root" waiting on "provider.aws (close)"
+2020/01/15 20:56:10 [TRACE] dag/walk: added edge: "aws_spot_instance_request.dl_worker" waiting on "var.instance_type"
+2020/01/15 20:56:10 [TRACE] dag/walk: dependencies changed for "root", sending new deps
+2020/01/15 20:56:10 [TRACE] dag/walk: dependencies changed for "aws_vpc.main", sending new deps
+2020/01/15 20:56:10 [TRACE] dag/walk: dependencies changed for "aws_spot_instance_request.dl_worker", sending new deps
+2020/01/15 20:56:10 [TRACE] dag/walk: dependencies changed for "meta.count-boundary (count boundary fixup)", sending new deps
+2020/01/15 20:56:10 [TRACE] dag/walk: dependencies changed for "provider.aws (close)", sending new deps
+2020/01/15 20:56:10 [TRACE] dag/walk: walking "var.ami_id"
+2020/01/15 20:56:10 [TRACE] vertex 'root.var.ami_id': walking
+2020/01/15 20:56:10 [TRACE] dag/walk: walking "var.aws_region"
+2020/01/15 20:56:10 [TRACE] vertex 'root.var.aws_region': walking
+2020/01/15 20:56:10 [TRACE] dag/walk: walking "var.instance_type"
+2020/01/15 20:56:10 [TRACE] vertex 'root.var.instance_type': walking
+2020/01/15 20:56:10 [TRACE] dag/walk: walking "provider.aws"
+2020/01/15 20:56:10 [TRACE] vertex 'root.provider.aws': walking
+2020/01/15 20:56:10 [TRACE] dag/walk: walking "var.spot_price"
+2020/01/15 20:56:10 [TRACE] vertex 'root.var.spot_price': walking
+2020/01/15 20:56:10 [TRACE] vertex 'root.provider.aws': evaluating
+2020/01/15 20:56:10 [TRACE] [walkValidate] Entering eval tree: provider.aws
+2020/01/15 20:56:10 [TRACE] root: eval: *terraform.EvalSequence
+2020/01/15 20:56:10 [TRACE] root: eval: *terraform.EvalInitProvider
+2020/01/15 20:56:10 [TRACE] root: eval: terraform.EvalNoop
+2020/01/15 20:56:10 [TRACE] root: eval: *terraform.EvalOpFilter
+2020/01/15 20:56:10 [TRACE] root: eval: *terraform.EvalSequence
+2020/01/15 20:56:10 [TRACE] root: eval: *terraform.EvalGetProvider
+2020/01/15 20:56:10 [TRACE] root: eval: *terraform.EvalInterpolateProvider
+2020/01/15 20:56:10 [TRACE] root: eval: *terraform.EvalBuildProviderConfig
+2020/01/15 20:56:10 [TRACE] root: eval: *terraform.EvalValidateProvider
+2020/01/15 20:56:10 [TRACE] root: eval: terraform.EvalNoop
+2020/01/15 20:56:10 [TRACE] root: eval: terraform.EvalNoop
+2020/01/15 20:56:10 [TRACE] [walkValidate] Exiting eval tree: provider.aws
+2020/01/15 20:56:10 [TRACE] dag/walk: walking "aws_vpc.main"
+2020/01/15 20:56:10 [TRACE] vertex 'root.aws_vpc.main': walking
+2020/01/15 20:56:10 [TRACE] vertex 'root.aws_vpc.main': evaluating
+2020/01/15 20:56:10 [TRACE] [walkValidate] Entering eval tree: aws_vpc.main
+2020/01/15 20:56:10 [TRACE] root: eval: *terraform.EvalSequence
+2020/01/15 20:56:10 [TRACE] root: eval: *terraform.EvalInterpolate
+2020/01/15 20:56:10 [TRACE] dag/walk: walking "aws_spot_instance_request.dl_worker"
+2020/01/15 20:56:10 [TRACE] vertex 'root.aws_spot_instance_request.dl_worker': walking
+2020/01/15 20:56:10 [TRACE] vertex 'root.aws_spot_instance_request.dl_worker': evaluating
+2020/01/15 20:56:10 [TRACE] [walkValidate] Entering eval tree: aws_spot_instance_request.dl_worker
+2020/01/15 20:56:10 [TRACE] root: eval: *terraform.EvalSequence
+2020/01/15 20:56:10 [TRACE] root: eval: *terraform.EvalInterpolate
+2020/01/15 20:56:10 [TRACE] root: eval: *terraform.EvalIf
+2020/01/15 20:56:10 [TRACE] root: eval: *terraform.EvalValidateCount
+2020/01/15 20:56:10 [TRACE] root: eval: *terraform.EvalIf
+2020/01/15 20:56:10 [TRACE] root: eval: *terraform.EvalValidateCount
+2020/01/15 20:56:10 [TRACE] root: eval: *terraform.EvalCountFixZeroOneBoundary
+2020/01/15 20:56:10 [TRACE] root: eval: *terraform.EvalCountFixZeroOneBoundary
+2020/01/15 20:56:10 [TRACE] [walkValidate] Exiting eval tree: aws_spot_instance_request.dl_worker
+2020/01/15 20:56:10 [TRACE] [walkValidate] Exiting eval tree: aws_vpc.main
+2020/01/15 20:56:10 [TRACE] vertex 'root.aws_spot_instance_request.dl_worker': expanding/walking dynamic subgraph
+2020/01/15 20:56:10 [TRACE] vertex 'root.aws_vpc.main': expanding/walking dynamic subgraph
+2020/01/15 20:56:10 [TRACE] Graph after step *terraform.ResourceCountTransformer:
+
+aws_spot_instance_request.dl_worker - *terraform.NodeValidatableResourceInstance
+2020/01/15 20:56:10 [TRACE] Graph after step *terraform.ResourceCountTransformer:
+
+aws_vpc.main - *terraform.NodeValidatableResourceInstance
+2020/01/15 20:56:10 [DEBUG] Resource state not found for "aws_spot_instance_request.dl_worker": aws_spot_instance_request.dl_worker
+2020/01/15 20:56:10 [TRACE] Graph after step *terraform.AttachStateTransformer:
+
+aws_spot_instance_request.dl_worker - *terraform.NodeValidatableResourceInstance
+2020/01/15 20:56:10 [TRACE] Graph after step *terraform.TargetsTransformer:
+
+aws_spot_instance_request.dl_worker - *terraform.NodeValidatableResourceInstance
+2020/01/15 20:56:10 [DEBUG] ReferenceTransformer: "aws_spot_instance_request.dl_worker" references: []
+2020/01/15 20:56:10 [TRACE] Graph after step *terraform.ReferenceTransformer:
+
+aws_spot_instance_request.dl_worker - *terraform.NodeValidatableResourceInstance
+2020/01/15 20:56:10 [TRACE] Graph after step *terraform.RootTransformer:
+
+aws_spot_instance_request.dl_worker - *terraform.NodeValidatableResourceInstance
+2020/01/15 20:56:10 [TRACE] dag/walk: added new vertex: "aws_spot_instance_request.dl_worker"
+2020/01/15 20:56:10 [TRACE] dag/walk: walking "aws_spot_instance_request.dl_worker"
+2020/01/15 20:56:10 [TRACE] vertex 'root.aws_spot_instance_request.dl_worker': walking
+2020/01/15 20:56:10 [TRACE] vertex 'root.aws_spot_instance_request.dl_worker': evaluating
+2020/01/15 20:56:10 [TRACE] [walkValidate] Entering eval tree: aws_spot_instance_request.dl_worker
+2020/01/15 20:56:10 [TRACE] root: eval: *terraform.EvalSequence
+2020/01/15 20:56:10 [TRACE] root: eval: *terraform.EvalValidateResourceSelfRef
+2020/01/15 20:56:10 [TRACE] root: eval: *terraform.EvalGetProvider
+2020/01/15 20:56:10 [TRACE] root: eval: *terraform.EvalInterpolate
+2020/01/15 20:56:10 [DEBUG] Resource state not found for "aws_vpc.main": aws_vpc.main
+2020/01/15 20:56:10 [TRACE] Graph after step *terraform.AttachStateTransformer:
+
+aws_vpc.main - *terraform.NodeValidatableResourceInstance
+2020/01/15 20:56:10 [TRACE] Graph after step *terraform.TargetsTransformer:
+
+aws_vpc.main - *terraform.NodeValidatableResourceInstance
+2020/01/15 20:56:10 [DEBUG] ReferenceTransformer: "aws_vpc.main" references: []
+2020/01/15 20:56:10 [TRACE] Graph after step *terraform.ReferenceTransformer:
+
+aws_vpc.main - *terraform.NodeValidatableResourceInstance
+2020/01/15 20:56:10 [TRACE] Graph after step *terraform.RootTransformer:
+
+aws_vpc.main - *terraform.NodeValidatableResourceInstance
+2020/01/15 20:56:10 [TRACE] dag/walk: added new vertex: "aws_vpc.main"
+2020/01/15 20:56:10 [TRACE] root: eval: *terraform.EvalValidateResource
+2020/01/15 20:56:10 [TRACE] dag/walk: walking "aws_vpc.main"
+2020/01/15 20:56:10 [TRACE] vertex 'root.aws_vpc.main': walking
+2020/01/15 20:56:10 [TRACE] vertex 'root.aws_vpc.main': evaluating
+2020/01/15 20:56:10 [TRACE] [walkValidate] Entering eval tree: aws_vpc.main
+2020/01/15 20:56:10 [TRACE] root: eval: *terraform.EvalSequence
+2020/01/15 20:56:10 [TRACE] root: eval: *terraform.EvalValidateResourceSelfRef
+2020/01/15 20:56:10 [TRACE] root: eval: *terraform.EvalGetProvider
+2020/01/15 20:56:10 [TRACE] root: eval: *terraform.EvalInterpolate
+2020/01/15 20:56:10 [TRACE] root: eval: *terraform.EvalValidateResource
+2020/01/15 20:56:10 [TRACE] [walkValidate] Exiting eval tree: aws_spot_instance_request.dl_worker
+2020/01/15 20:56:10 [TRACE] [walkValidate] Exiting eval tree: aws_vpc.main
+2020/01/15 20:56:10 [TRACE] dag/walk: walking "provider.aws (close)"
+2020/01/15 20:56:10 [TRACE] vertex 'root.provider.aws (close)': walking
+2020/01/15 20:56:10 [TRACE] vertex 'root.provider.aws (close)': evaluating
+2020/01/15 20:56:10 [TRACE] dag/walk: walking "meta.count-boundary (count boundary fixup)"
+2020/01/15 20:56:10 [TRACE] vertex 'root.meta.count-boundary (count boundary fixup)': walking
+2020/01/15 20:56:10 [TRACE] vertex 'root.meta.count-boundary (count boundary fixup)': evaluating
+2020/01/15 20:56:10 [TRACE] [walkValidate] Entering eval tree: meta.count-boundary (count boundary fixup)
+2020/01/15 20:56:10 [TRACE] [walkValidate] Entering eval tree: provider.aws (close)
+2020/01/15 20:56:10 [TRACE] root: eval: *terraform.EvalCloseProvider
+2020/01/15 20:56:10 [TRACE] [walkValidate] Exiting eval tree: provider.aws (close)
+2020/01/15 20:56:10 [TRACE] root: eval: *terraform.EvalCountFixZeroOneBoundaryGlobal
+2020/01/15 20:56:10 [TRACE] [walkValidate] Exiting eval tree: meta.count-boundary (count boundary fixup)
+2020/01/15 20:56:10 [TRACE] dag/walk: walking "root"
+2020/01/15 20:56:10 [TRACE] vertex 'root.root': walking
+2020/01/15 20:56:10 [INFO] backend/local: plan calling Refresh
+2020/01/15 20:56:10 [INFO] terraform: building graph: GraphTypeRefresh
+2020/01/15 20:56:10 [TRACE] No managed resources in state during refresh, skipping managed resource transformer
+2020/01/15 20:56:10 [TRACE] ConfigTransformer: Starting for path: []
+2020/01/15 20:56:10 [TRACE] Graph after step *terraform.ConfigTransformer:
+
+2020/01/15 20:56:10 [TRACE] Graph after step *terraform.OrphanResourceTransformer:
+
+2020/01/15 20:56:10 [TRACE] Graph after step *terraform.AttachStateTransformer:
+
+2020/01/15 20:56:10 [TRACE] AttachResourceConfigTransformer: Beginning...
+2020/01/15 20:56:10 [TRACE] Graph after step *terraform.AttachResourceConfigTransformer:
+
+2020/01/15 20:56:10 [TRACE] Graph after step *terraform.RootVariableTransformer:
+
+var.ami_id - *terraform.NodeRootVariable
+var.aws_region - *terraform.NodeRootVariable
+var.instance_type - *terraform.NodeRootVariable
+var.spot_price - *terraform.NodeRootVariable
+2020/01/15 20:56:10 [TRACE] ProviderConfigTransformer: Starting for path: []
+2020/01/15 20:56:10 [TRACE] Attach provider request: []string{} aws
+2020/01/15 20:56:10 [TRACE] Attaching provider config: *config.ProviderConfig{Name:"aws", Alias:"", Version:"~> 2.0", RawConfig:(*config.RawConfig)(0xc000416fc0)}
+2020/01/15 20:56:10 [TRACE] Graph after step *terraform.ProviderConfigTransformer:
+
+provider.aws - *terraform.NodeApplyableProvider
+var.ami_id - *terraform.NodeRootVariable
+var.aws_region - *terraform.NodeRootVariable
+var.instance_type - *terraform.NodeRootVariable
+var.spot_price - *terraform.NodeRootVariable
+2020/01/15 20:56:10 [TRACE] Graph after step *terraform.MissingProviderTransformer:
+
+provider.aws - *terraform.NodeApplyableProvider
+var.ami_id - *terraform.NodeRootVariable
+var.aws_region - *terraform.NodeRootVariable
+var.instance_type - *terraform.NodeRootVariable
+var.spot_price - *terraform.NodeRootVariable
+2020/01/15 20:56:10 [TRACE] Graph after step *terraform.ProviderTransformer:
+
+provider.aws - *terraform.NodeApplyableProvider
+var.ami_id - *terraform.NodeRootVariable
+var.aws_region - *terraform.NodeRootVariable
+var.instance_type - *terraform.NodeRootVariable
+var.spot_price - *terraform.NodeRootVariable
+2020/01/15 20:56:10 [DEBUG] pruning unused provider provider.aws
+2020/01/15 20:56:10 [TRACE] Graph after step *terraform.PruneProviderTransformer:
+
+var.ami_id - *terraform.NodeRootVariable
+var.aws_region - *terraform.NodeRootVariable
+var.instance_type - *terraform.NodeRootVariable
+var.spot_price - *terraform.NodeRootVariable
+2020/01/15 20:56:10 [TRACE] Graph after step *terraform.ParentProviderTransformer:
+
+var.ami_id - *terraform.NodeRootVariable
+var.aws_region - *terraform.NodeRootVariable
+var.instance_type - *terraform.NodeRootVariable
+var.spot_price - *terraform.NodeRootVariable
+2020/01/15 20:56:10 [TRACE] Graph after step *terraform.graphTransformerMulti:
+
+var.ami_id - *terraform.NodeRootVariable
+var.aws_region - *terraform.NodeRootVariable
+var.instance_type - *terraform.NodeRootVariable
+var.spot_price - *terraform.NodeRootVariable
+2020/01/15 20:56:10 [TRACE] Graph after step *terraform.LocalTransformer:
+
+var.ami_id - *terraform.NodeRootVariable
+var.aws_region - *terraform.NodeRootVariable
+var.instance_type - *terraform.NodeRootVariable
+var.spot_price - *terraform.NodeRootVariable
+2020/01/15 20:56:10 [TRACE] Graph after step *terraform.OutputTransformer:
+
+var.ami_id - *terraform.NodeRootVariable
+var.aws_region - *terraform.NodeRootVariable
+var.instance_type - *terraform.NodeRootVariable
+var.spot_price - *terraform.NodeRootVariable
+2020/01/15 20:56:10 [TRACE] Graph after step *terraform.ModuleVariableTransformer:
+
+var.ami_id - *terraform.NodeRootVariable
+var.aws_region - *terraform.NodeRootVariable
+var.instance_type - *terraform.NodeRootVariable
+var.spot_price - *terraform.NodeRootVariable
+2020/01/15 20:56:10 [DEBUG] ReferenceTransformer: "var.ami_id" references: []
+2020/01/15 20:56:10 [DEBUG] ReferenceTransformer: "var.aws_region" references: []
+2020/01/15 20:56:10 [DEBUG] ReferenceTransformer: "var.spot_price" references: []
+2020/01/15 20:56:10 [DEBUG] ReferenceTransformer: "var.instance_type" references: []
+2020/01/15 20:56:10 [TRACE] Graph after step *terraform.ReferenceTransformer:
+
+var.ami_id - *terraform.NodeRootVariable
+var.aws_region - *terraform.NodeRootVariable
+var.instance_type - *terraform.NodeRootVariable
+var.spot_price - *terraform.NodeRootVariable
+2020/01/15 20:56:10 [TRACE] Graph after step *terraform.TargetsTransformer:
+
+var.ami_id - *terraform.NodeRootVariable
+var.aws_region - *terraform.NodeRootVariable
+var.instance_type - *terraform.NodeRootVariable
+var.spot_price - *terraform.NodeRootVariable
+2020/01/15 20:56:10 [TRACE] Graph after step *terraform.CloseProviderTransformer:
+
+var.ami_id - *terraform.NodeRootVariable
+var.aws_region - *terraform.NodeRootVariable
+var.instance_type - *terraform.NodeRootVariable
+var.spot_price - *terraform.NodeRootVariable
+2020/01/15 20:56:10 [TRACE] Graph after step *terraform.RootTransformer:
+
+root - terraform.graphNodeRoot
+  var.ami_id - *terraform.NodeRootVariable
+  var.aws_region - *terraform.NodeRootVariable
+  var.instance_type - *terraform.NodeRootVariable
+  var.spot_price - *terraform.NodeRootVariable
+var.ami_id - *terraform.NodeRootVariable
+var.aws_region - *terraform.NodeRootVariable
+var.instance_type - *terraform.NodeRootVariable
+var.spot_price - *terraform.NodeRootVariable
+2020/01/15 20:56:10 [TRACE] Graph after step *terraform.TransitiveReductionTransformer:
+
+root - terraform.graphNodeRoot
+  var.ami_id - *terraform.NodeRootVariable
+  var.aws_region - *terraform.NodeRootVariable
+  var.instance_type - *terraform.NodeRootVariable
+  var.spot_price - *terraform.NodeRootVariable
+var.ami_id - *terraform.NodeRootVariable
+var.aws_region - *terraform.NodeRootVariable
+var.instance_type - *terraform.NodeRootVariable
+var.spot_price - *terraform.NodeRootVariable
+2020/01/15 20:56:10 [DEBUG] Starting graph walk: walkRefresh
+2020/01/15 20:56:10 [TRACE] dag/walk: added new vertex: "var.ami_id"
+2020/01/15 20:56:10 [TRACE] dag/walk: added new vertex: "var.aws_region"
+2020/01/15 20:56:10 [TRACE] dag/walk: added new vertex: "var.spot_price"
+2020/01/15 20:56:10 [TRACE] dag/walk: added new vertex: "var.instance_type"
+2020/01/15 20:56:10 [TRACE] dag/walk: added new vertex: "root"
+2020/01/15 20:56:10 [TRACE] dag/walk: added edge: "root" waiting on "var.ami_id"
+2020/01/15 20:56:10 [TRACE] dag/walk: added edge: "root" waiting on "var.aws_region"
+2020/01/15 20:56:10 [TRACE] dag/walk: added edge: "root" waiting on "var.spot_price"
+2020/01/15 20:56:10 [TRACE] dag/walk: added edge: "root" waiting on "var.instance_type"
+2020/01/15 20:56:10 [TRACE] dag/walk: dependencies changed for "root", sending new deps
+2020/01/15 20:56:10 [TRACE] dag/walk: walking "var.spot_price"
+2020/01/15 20:56:10 [TRACE] vertex 'root.var.spot_price': walking
+2020/01/15 20:56:10 [TRACE] dag/walk: walking "var.ami_id"
+2020/01/15 20:56:10 [TRACE] vertex 'root.var.ami_id': walking
+2020/01/15 20:56:10 [TRACE] dag/walk: walking "var.instance_type"
+2020/01/15 20:56:10 [TRACE] vertex 'root.var.instance_type': walking
+2020/01/15 20:56:10 [TRACE] dag/walk: walking "var.aws_region"
+2020/01/15 20:56:10 [TRACE] vertex 'root.var.aws_region': walking
+2020/01/15 20:56:10 [TRACE] dag/walk: walking "root"
+2020/01/15 20:56:10 [TRACE] vertex 'root.root': walking
+2020/01/15 20:56:10 [INFO] backend/local: plan calling Plan
+2020/01/15 20:56:10 [INFO] terraform: building graph: GraphTypePlan
+2020/01/15 20:56:10 [TRACE] ConfigTransformer: Starting for path: []
+2020/01/15 20:56:10 [TRACE] Graph after step *terraform.ConfigTransformer:
+
+aws_spot_instance_request.dl_worker - *terraform.NodePlannableResource
+aws_vpc.main - *terraform.NodePlannableResource
+2020/01/15 20:56:10 [TRACE] Graph after step *terraform.LocalTransformer:
+
+aws_spot_instance_request.dl_worker - *terraform.NodePlannableResource
+aws_vpc.main - *terraform.NodePlannableResource
+2020/01/15 20:56:10 [TRACE] Graph after step *terraform.OutputTransformer:
+
+aws_spot_instance_request.dl_worker - *terraform.NodePlannableResource
+aws_vpc.main - *terraform.NodePlannableResource
+2020/01/15 20:56:10 [TRACE] Graph after step *terraform.OrphanResourceTransformer:
+
+aws_spot_instance_request.dl_worker - *terraform.NodePlannableResource
+aws_vpc.main - *terraform.NodePlannableResource
+2020/01/15 20:56:10 [TRACE] Graph after step *terraform.OrphanOutputTransformer:
+
+aws_spot_instance_request.dl_worker - *terraform.NodePlannableResource
+aws_vpc.main - *terraform.NodePlannableResource
+2020/01/15 20:56:10 [TRACE] AttachResourceConfigTransformer: Beginning...
+2020/01/15 20:56:10 [TRACE] AttachResourceConfigTransformer: Attach resource config request: aws_spot_instance_request.dl_worker
+2020/01/15 20:56:10 [TRACE] Attaching resource config: &config.Resource{Mode:0, Name:"dl_worker", Type:"aws_spot_instance_request", RawCount:(*config.RawConfig)(0xc0004164d0), RawConfig:(*config.RawConfig)(0xc000416310), Provisioners:[]*config.Provisioner(nil), Provider:"", DependsOn:[]string(nil), Lifecycle:config.ResourceLifecycle{CreateBeforeDestroy:false, PreventDestroy:false, IgnoreChanges:[]string(nil)}}
+2020/01/15 20:56:10 [TRACE] AttachResourceConfigTransformer: Attach resource config request: aws_vpc.main
+2020/01/15 20:56:10 [TRACE] Attaching resource config: &config.Resource{Mode:0, Name:"main", Type:"aws_vpc", RawCount:(*config.RawConfig)(0xc000416690), RawConfig:(*config.RawConfig)(0xc000416620), Provisioners:[]*config.Provisioner(nil), Provider:"", DependsOn:[]string(nil), Lifecycle:config.ResourceLifecycle{CreateBeforeDestroy:false, PreventDestroy:false, IgnoreChanges:[]string(nil)}}
+2020/01/15 20:56:10 [TRACE] Graph after step *terraform.AttachResourceConfigTransformer:
+
+aws_spot_instance_request.dl_worker - *terraform.NodePlannableResource
+aws_vpc.main - *terraform.NodePlannableResource
+2020/01/15 20:56:10 [DEBUG] Resource state not found for "aws_vpc.main": aws_vpc.main
+2020/01/15 20:56:10 [DEBUG] Resource state not found for "aws_spot_instance_request.dl_worker": aws_spot_instance_request.dl_worker
+2020/01/15 20:56:10 [TRACE] Graph after step *terraform.AttachStateTransformer:
+
+aws_spot_instance_request.dl_worker - *terraform.NodePlannableResource
+aws_vpc.main - *terraform.NodePlannableResource
+2020/01/15 20:56:10 [TRACE] Graph after step *terraform.RootVariableTransformer:
+
+aws_spot_instance_request.dl_worker - *terraform.NodePlannableResource
+aws_vpc.main - *terraform.NodePlannableResource
+var.ami_id - *terraform.NodeRootVariable
+var.aws_region - *terraform.NodeRootVariable
+var.instance_type - *terraform.NodeRootVariable
+var.spot_price - *terraform.NodeRootVariable
+2020/01/15 20:56:10 [TRACE] ProviderConfigTransformer: Starting for path: []
+2020/01/15 20:56:10 [TRACE] Attach provider request: []string{} aws
+2020/01/15 20:56:10 [TRACE] Attaching provider config: *config.ProviderConfig{Name:"aws", Alias:"", Version:"~> 2.0", RawConfig:(*config.RawConfig)(0xc000416fc0)}
+2020/01/15 20:56:10 [TRACE] Graph after step *terraform.ProviderConfigTransformer:
+
+aws_spot_instance_request.dl_worker - *terraform.NodePlannableResource
+aws_vpc.main - *terraform.NodePlannableResource
+provider.aws - *terraform.NodeApplyableProvider
+var.ami_id - *terraform.NodeRootVariable
+var.aws_region - *terraform.NodeRootVariable
+var.instance_type - *terraform.NodeRootVariable
+var.spot_price - *terraform.NodeRootVariable
+2020/01/15 20:56:10 [TRACE] Graph after step *terraform.MissingProviderTransformer:
+
+aws_spot_instance_request.dl_worker - *terraform.NodePlannableResource
+aws_vpc.main - *terraform.NodePlannableResource
+provider.aws - *terraform.NodeApplyableProvider
+var.ami_id - *terraform.NodeRootVariable
+var.aws_region - *terraform.NodeRootVariable
+var.instance_type - *terraform.NodeRootVariable
+var.spot_price - *terraform.NodeRootVariable
+2020/01/15 20:56:10 [DEBUG] resource aws_spot_instance_request.dl_worker using provider provider.aws
+2020/01/15 20:56:10 [DEBUG] resource aws_vpc.main using provider provider.aws
+2020/01/15 20:56:10 [TRACE] Graph after step *terraform.ProviderTransformer:
+
+aws_spot_instance_request.dl_worker - *terraform.NodePlannableResource
+  provider.aws - *terraform.NodeApplyableProvider
+aws_vpc.main - *terraform.NodePlannableResource
+  provider.aws - *terraform.NodeApplyableProvider
+provider.aws - *terraform.NodeApplyableProvider
+var.ami_id - *terraform.NodeRootVariable
+var.aws_region - *terraform.NodeRootVariable
+var.instance_type - *terraform.NodeRootVariable
+var.spot_price - *terraform.NodeRootVariable
+2020/01/15 20:56:10 [TRACE] Graph after step *terraform.PruneProviderTransformer:
+
+aws_spot_instance_request.dl_worker - *terraform.NodePlannableResource
+  provider.aws - *terraform.NodeApplyableProvider
+aws_vpc.main - *terraform.NodePlannableResource
+  provider.aws - *terraform.NodeApplyableProvider
+provider.aws - *terraform.NodeApplyableProvider
+var.ami_id - *terraform.NodeRootVariable
+var.aws_region - *terraform.NodeRootVariable
+var.instance_type - *terraform.NodeRootVariable
+var.spot_price - *terraform.NodeRootVariable
+2020/01/15 20:56:10 [TRACE] Graph after step *terraform.ParentProviderTransformer:
+
+aws_spot_instance_request.dl_worker - *terraform.NodePlannableResource
+  provider.aws - *terraform.NodeApplyableProvider
+aws_vpc.main - *terraform.NodePlannableResource
+  provider.aws - *terraform.NodeApplyableProvider
+provider.aws - *terraform.NodeApplyableProvider
+var.ami_id - *terraform.NodeRootVariable
+var.aws_region - *terraform.NodeRootVariable
+var.instance_type - *terraform.NodeRootVariable
+var.spot_price - *terraform.NodeRootVariable
+2020/01/15 20:56:10 [TRACE] Graph after step *terraform.graphTransformerMulti:
+
+aws_spot_instance_request.dl_worker - *terraform.NodePlannableResource
+  provider.aws - *terraform.NodeApplyableProvider
+aws_vpc.main - *terraform.NodePlannableResource
+  provider.aws - *terraform.NodeApplyableProvider
+provider.aws - *terraform.NodeApplyableProvider
+var.ami_id - *terraform.NodeRootVariable
+var.aws_region - *terraform.NodeRootVariable
+var.instance_type - *terraform.NodeRootVariable
+var.spot_price - *terraform.NodeRootVariable
+2020/01/15 20:56:10 [TRACE] Graph after step *terraform.ModuleVariableTransformer:
+
+aws_spot_instance_request.dl_worker - *terraform.NodePlannableResource
+  provider.aws - *terraform.NodeApplyableProvider
+aws_vpc.main - *terraform.NodePlannableResource
+  provider.aws - *terraform.NodeApplyableProvider
+provider.aws - *terraform.NodeApplyableProvider
+var.ami_id - *terraform.NodeRootVariable
+var.aws_region - *terraform.NodeRootVariable
+var.instance_type - *terraform.NodeRootVariable
+var.spot_price - *terraform.NodeRootVariable
+2020/01/15 20:56:10 [TRACE] Graph after step *terraform.RemovedModuleTransformer:
+
+aws_spot_instance_request.dl_worker - *terraform.NodePlannableResource
+  provider.aws - *terraform.NodeApplyableProvider
+aws_vpc.main - *terraform.NodePlannableResource
+  provider.aws - *terraform.NodeApplyableProvider
+provider.aws - *terraform.NodeApplyableProvider
+var.ami_id - *terraform.NodeRootVariable
+var.aws_region - *terraform.NodeRootVariable
+var.instance_type - *terraform.NodeRootVariable
+var.spot_price - *terraform.NodeRootVariable
+2020/01/15 20:56:10 [DEBUG] ReferenceTransformer: "provider.aws" references: []
+2020/01/15 20:56:10 [DEBUG] ReferenceTransformer: "aws_spot_instance_request.dl_worker" references: [var.ami_id var.instance_type var.spot_price]
+2020/01/15 20:56:10 [DEBUG] ReferenceTransformer: "aws_vpc.main" references: []
+2020/01/15 20:56:10 [DEBUG] ReferenceTransformer: "var.ami_id" references: []
+2020/01/15 20:56:10 [DEBUG] ReferenceTransformer: "var.aws_region" references: []
+2020/01/15 20:56:10 [DEBUG] ReferenceTransformer: "var.spot_price" references: []
+2020/01/15 20:56:10 [DEBUG] ReferenceTransformer: "var.instance_type" references: []
+2020/01/15 20:56:10 [TRACE] Graph after step *terraform.ReferenceTransformer:
+
+aws_spot_instance_request.dl_worker - *terraform.NodePlannableResource
+  provider.aws - *terraform.NodeApplyableProvider
+  var.ami_id - *terraform.NodeRootVariable
+  var.instance_type - *terraform.NodeRootVariable
+  var.spot_price - *terraform.NodeRootVariable
+aws_vpc.main - *terraform.NodePlannableResource
+  provider.aws - *terraform.NodeApplyableProvider
+provider.aws - *terraform.NodeApplyableProvider
+var.ami_id - *terraform.NodeRootVariable
+var.aws_region - *terraform.NodeRootVariable
+var.instance_type - *terraform.NodeRootVariable
+var.spot_price - *terraform.NodeRootVariable
+2020/01/15 20:56:10 [TRACE] Graph after step *terraform.CountBoundaryTransformer:
+
+aws_spot_instance_request.dl_worker - *terraform.NodePlannableResource
+  provider.aws - *terraform.NodeApplyableProvider
+  var.ami_id - *terraform.NodeRootVariable
+  var.instance_type - *terraform.NodeRootVariable
+  var.spot_price - *terraform.NodeRootVariable
+aws_vpc.main - *terraform.NodePlannableResource
+  provider.aws - *terraform.NodeApplyableProvider
+meta.count-boundary (count boundary fixup) - *terraform.NodeCountBoundary
+  aws_spot_instance_request.dl_worker - *terraform.NodePlannableResource
+  aws_vpc.main - *terraform.NodePlannableResource
+  provider.aws - *terraform.NodeApplyableProvider
+  var.ami_id - *terraform.NodeRootVariable
+  var.aws_region - *terraform.NodeRootVariable
+  var.instance_type - *terraform.NodeRootVariable
+  var.spot_price - *terraform.NodeRootVariable
+provider.aws - *terraform.NodeApplyableProvider
+var.ami_id - *terraform.NodeRootVariable
+var.aws_region - *terraform.NodeRootVariable
+var.instance_type - *terraform.NodeRootVariable
+var.spot_price - *terraform.NodeRootVariable
+2020/01/15 20:56:10 [TRACE] Graph after step *terraform.TargetsTransformer:
+
+aws_spot_instance_request.dl_worker - *terraform.NodePlannableResource
+  provider.aws - *terraform.NodeApplyableProvider
+  var.ami_id - *terraform.NodeRootVariable
+  var.instance_type - *terraform.NodeRootVariable
+  var.spot_price - *terraform.NodeRootVariable
+aws_vpc.main - *terraform.NodePlannableResource
+  provider.aws - *terraform.NodeApplyableProvider
+meta.count-boundary (count boundary fixup) - *terraform.NodeCountBoundary
+  aws_spot_instance_request.dl_worker - *terraform.NodePlannableResource
+  aws_vpc.main - *terraform.NodePlannableResource
+  provider.aws - *terraform.NodeApplyableProvider
+  var.ami_id - *terraform.NodeRootVariable
+  var.aws_region - *terraform.NodeRootVariable
+  var.instance_type - *terraform.NodeRootVariable
+  var.spot_price - *terraform.NodeRootVariable
+provider.aws - *terraform.NodeApplyableProvider
+var.ami_id - *terraform.NodeRootVariable
+var.aws_region - *terraform.NodeRootVariable
+var.instance_type - *terraform.NodeRootVariable
+var.spot_price - *terraform.NodeRootVariable
+2020/01/15 20:56:10 [TRACE] Graph after step *terraform.CloseProviderTransformer:
+
+aws_spot_instance_request.dl_worker - *terraform.NodePlannableResource
+  provider.aws - *terraform.NodeApplyableProvider
+  var.ami_id - *terraform.NodeRootVariable
+  var.instance_type - *terraform.NodeRootVariable
+  var.spot_price - *terraform.NodeRootVariable
+aws_vpc.main - *terraform.NodePlannableResource
+  provider.aws - *terraform.NodeApplyableProvider
+meta.count-boundary (count boundary fixup) - *terraform.NodeCountBoundary
+  aws_spot_instance_request.dl_worker - *terraform.NodePlannableResource
+  aws_vpc.main - *terraform.NodePlannableResource
+  provider.aws - *terraform.NodeApplyableProvider
+  var.ami_id - *terraform.NodeRootVariable
+  var.aws_region - *terraform.NodeRootVariable
+  var.instance_type - *terraform.NodeRootVariable
+  var.spot_price - *terraform.NodeRootVariable
+provider.aws - *terraform.NodeApplyableProvider
+provider.aws (close) - *terraform.graphNodeCloseProvider
+  aws_spot_instance_request.dl_worker - *terraform.NodePlannableResource
+  aws_vpc.main - *terraform.NodePlannableResource
+  provider.aws - *terraform.NodeApplyableProvider
+var.ami_id - *terraform.NodeRootVariable
+var.aws_region - *terraform.NodeRootVariable
+var.instance_type - *terraform.NodeRootVariable
+var.spot_price - *terraform.NodeRootVariable
+2020/01/15 20:56:10 [TRACE] Graph after step *terraform.CloseProvisionerTransformer:
+
+aws_spot_instance_request.dl_worker - *terraform.NodePlannableResource
+  provider.aws - *terraform.NodeApplyableProvider
+  var.ami_id - *terraform.NodeRootVariable
+  var.instance_type - *terraform.NodeRootVariable
+  var.spot_price - *terraform.NodeRootVariable
+aws_vpc.main - *terraform.NodePlannableResource
+  provider.aws - *terraform.NodeApplyableProvider
+meta.count-boundary (count boundary fixup) - *terraform.NodeCountBoundary
+  aws_spot_instance_request.dl_worker - *terraform.NodePlannableResource
+  aws_vpc.main - *terraform.NodePlannableResource
+  provider.aws - *terraform.NodeApplyableProvider
+  var.ami_id - *terraform.NodeRootVariable
+  var.aws_region - *terraform.NodeRootVariable
+  var.instance_type - *terraform.NodeRootVariable
+  var.spot_price - *terraform.NodeRootVariable
+provider.aws - *terraform.NodeApplyableProvider
+provider.aws (close) - *terraform.graphNodeCloseProvider
+  aws_spot_instance_request.dl_worker - *terraform.NodePlannableResource
+  aws_vpc.main - *terraform.NodePlannableResource
+  provider.aws - *terraform.NodeApplyableProvider
+var.ami_id - *terraform.NodeRootVariable
+var.aws_region - *terraform.NodeRootVariable
+var.instance_type - *terraform.NodeRootVariable
+var.spot_price - *terraform.NodeRootVariable
+2020/01/15 20:56:10 [TRACE] Graph after step *terraform.RootTransformer:
+
+aws_spot_instance_request.dl_worker - *terraform.NodePlannableResource
+  provider.aws - *terraform.NodeApplyableProvider
+  var.ami_id - *terraform.NodeRootVariable
+  var.instance_type - *terraform.NodeRootVariable
+  var.spot_price - *terraform.NodeRootVariable
+aws_vpc.main - *terraform.NodePlannableResource
+  provider.aws - *terraform.NodeApplyableProvider
+meta.count-boundary (count boundary fixup) - *terraform.NodeCountBoundary
+  aws_spot_instance_request.dl_worker - *terraform.NodePlannableResource
+  aws_vpc.main - *terraform.NodePlannableResource
+  provider.aws - *terraform.NodeApplyableProvider
+  var.ami_id - *terraform.NodeRootVariable
+  var.aws_region - *terraform.NodeRootVariable
+  var.instance_type - *terraform.NodeRootVariable
+  var.spot_price - *terraform.NodeRootVariable
+provider.aws - *terraform.NodeApplyableProvider
+provider.aws (close) - *terraform.graphNodeCloseProvider
+  aws_spot_instance_request.dl_worker - *terraform.NodePlannableResource
+  aws_vpc.main - *terraform.NodePlannableResource
+  provider.aws - *terraform.NodeApplyableProvider
+root - terraform.graphNodeRoot
+  meta.count-boundary (count boundary fixup) - *terraform.NodeCountBoundary
+  provider.aws (close) - *terraform.graphNodeCloseProvider
+var.ami_id - *terraform.NodeRootVariable
+var.aws_region - *terraform.NodeRootVariable
+var.instance_type - *terraform.NodeRootVariable
+var.spot_price - *terraform.NodeRootVariable
+2020/01/15 20:56:10 [TRACE] Graph after step *terraform.TransitiveReductionTransformer:
+
+aws_spot_instance_request.dl_worker - *terraform.NodePlannableResource
+  provider.aws - *terraform.NodeApplyableProvider
+  var.ami_id - *terraform.NodeRootVariable
+  var.instance_type - *terraform.NodeRootVariable
+  var.spot_price - *terraform.NodeRootVariable
+aws_vpc.main - *terraform.NodePlannableResource
+  provider.aws - *terraform.NodeApplyableProvider
+meta.count-boundary (count boundary fixup) - *terraform.NodeCountBoundary
+  aws_spot_instance_request.dl_worker - *terraform.NodePlannableResource
+  aws_vpc.main - *terraform.NodePlannableResource
+  var.aws_region - *terraform.NodeRootVariable
+provider.aws - *terraform.NodeApplyableProvider
+provider.aws (close) - *terraform.graphNodeCloseProvider
+  aws_spot_instance_request.dl_worker - *terraform.NodePlannableResource
+  aws_vpc.main - *terraform.NodePlannableResource
+root - terraform.graphNodeRoot
+  meta.count-boundary (count boundary fixup) - *terraform.NodeCountBoundary
+  provider.aws (close) - *terraform.graphNodeCloseProvider
+var.ami_id - *terraform.NodeRootVariable
+var.aws_region - *terraform.NodeRootVariable
+var.instance_type - *terraform.NodeRootVariable
+var.spot_price - *terraform.NodeRootVariable
+2020/01/15 20:56:10 [DEBUG] Starting graph walk: walkPlan
+2020/01/15 20:56:10 [TRACE] dag/walk: added new vertex: "var.aws_region"
+2020/01/15 20:56:10 [TRACE] dag/walk: added new vertex: "var.instance_type"
+2020/01/15 20:56:10 [TRACE] dag/walk: added new vertex: "aws_spot_instance_request.dl_worker"
+2020/01/15 20:56:10 [TRACE] dag/walk: added new vertex: "var.ami_id"
+2020/01/15 20:56:10 [TRACE] dag/walk: added new vertex: "meta.count-boundary (count boundary fixup)"
+2020/01/15 20:56:10 [TRACE] dag/walk: added new vertex: "var.spot_price"
+2020/01/15 20:56:10 [TRACE] dag/walk: added new vertex: "provider.aws (close)"
+2020/01/15 20:56:10 [TRACE] dag/walk: added new vertex: "root"
+2020/01/15 20:56:10 [TRACE] dag/walk: added new vertex: "aws_vpc.main"
+2020/01/15 20:56:10 [TRACE] dag/walk: added new vertex: "provider.aws"
+2020/01/15 20:56:10 [TRACE] dag/walk: added edge: "aws_spot_instance_request.dl_worker" waiting on "var.spot_price"
+2020/01/15 20:56:10 [TRACE] dag/walk: added edge: "meta.count-boundary (count boundary fixup)" waiting on "var.aws_region"
+2020/01/15 20:56:10 [TRACE] dag/walk: added edge: "meta.count-boundary (count boundary fixup)" waiting on "aws_vpc.main"
+2020/01/15 20:56:10 [TRACE] dag/walk: added edge: "aws_spot_instance_request.dl_worker" waiting on "provider.aws"
+2020/01/15 20:56:10 [TRACE] dag/walk: added edge: "aws_vpc.main" waiting on "provider.aws"
+2020/01/15 20:56:10 [TRACE] dag/walk: added edge: "aws_spot_instance_request.dl_worker" waiting on "var.ami_id"
+2020/01/15 20:56:10 [TRACE] dag/walk: added edge: "provider.aws (close)" waiting on "aws_vpc.main"
+2020/01/15 20:56:10 [TRACE] dag/walk: added edge: "root" waiting on "provider.aws (close)"
+2020/01/15 20:56:10 [TRACE] dag/walk: added edge: "meta.count-boundary (count boundary fixup)" waiting on "aws_spot_instance_request.dl_worker"
+2020/01/15 20:56:10 [TRACE] dag/walk: added edge: "aws_spot_instance_request.dl_worker" waiting on "var.instance_type"
+2020/01/15 20:56:10 [TRACE] dag/walk: added edge: "provider.aws (close)" waiting on "aws_spot_instance_request.dl_worker"
+2020/01/15 20:56:10 [TRACE] dag/walk: added edge: "root" waiting on "meta.count-boundary (count boundary fixup)"
+2020/01/15 20:56:10 [TRACE] dag/walk: dependencies changed for "aws_spot_instance_request.dl_worker", sending new deps
+2020/01/15 20:56:10 [TRACE] dag/walk: dependencies changed for "meta.count-boundary (count boundary fixup)", sending new deps
+2020/01/15 20:56:10 [TRACE] dag/walk: dependencies changed for "aws_vpc.main", sending new deps
+2020/01/15 20:56:10 [TRACE] dag/walk: dependencies changed for "provider.aws (close)", sending new deps
+2020/01/15 20:56:10 [TRACE] dag/walk: dependencies changed for "root", sending new deps
+2020/01/15 20:56:10 [TRACE] dag/walk: walking "var.aws_region"
+2020/01/15 20:56:10 [TRACE] vertex 'root.var.aws_region': walking
+2020/01/15 20:56:10 [TRACE] dag/walk: walking "provider.aws"
+2020/01/15 20:56:10 [TRACE] vertex 'root.provider.aws': walking
+2020/01/15 20:56:10 [TRACE] dag/walk: walking "var.instance_type"
+2020/01/15 20:56:10 [TRACE] vertex 'root.var.instance_type': walking
+2020/01/15 20:56:10 [TRACE] vertex 'root.provider.aws': evaluating
+2020/01/15 20:56:10 [TRACE] [walkPlan] Entering eval tree: provider.aws
+2020/01/15 20:56:10 [TRACE] dag/walk: walking "var.ami_id"
+2020/01/15 20:56:10 [TRACE] vertex 'root.var.ami_id': walking
+2020/01/15 20:56:10 [TRACE] root: eval: *terraform.EvalSequence
+2020/01/15 20:56:10 [TRACE] root: eval: *terraform.EvalInitProvider
+2020/01/15 20:56:10 [TRACE] dag/walk: walking "var.spot_price"
+2020/01/15 20:56:10 [TRACE] vertex 'root.var.spot_price': walking
+2020/01/15 20:56:10 [TRACE] root: eval: terraform.EvalNoop
+2020/01/15 20:56:10 [TRACE] root: eval: terraform.EvalNoop
+2020/01/15 20:56:10 [TRACE] root: eval: *terraform.EvalOpFilter
+2020/01/15 20:56:10 [TRACE] root: eval: *terraform.EvalSequence
+2020/01/15 20:56:10 [TRACE] root: eval: *terraform.EvalGetProvider
+2020/01/15 20:56:10 [TRACE] root: eval: *terraform.EvalInterpolateProvider
+2020/01/15 20:56:10 [TRACE] root: eval: *terraform.EvalBuildProviderConfig
+2020/01/15 20:56:10 [TRACE] root: eval: *terraform.EvalOpFilter
+2020/01/15 20:56:10 [TRACE] root: eval: *terraform.EvalSequence
+2020/01/15 20:56:10 [TRACE] root: eval: *terraform.EvalConfigProvider
+2020-01-15T20:56:10.866+0100 [DEBUG] plugin.terraform-provider-aws_v2.44.0_x4: 2020/01/15 20:56:10 [INFO] No assume_role block read from configuration
+2020-01-15T20:56:10.866+0100 [DEBUG] plugin.terraform-provider-aws_v2.44.0_x4: 2020/01/15 20:56:10 [INFO] Building AWS auth structure
+2020-01-15T20:56:10.866+0100 [DEBUG] plugin.terraform-provider-aws_v2.44.0_x4: 2020/01/15 20:56:10 [INFO] Setting AWS metadata API timeout to 100ms
+2020-01-15T20:56:12.389+0100 [DEBUG] plugin.terraform-provider-aws_v2.44.0_x4: 2020/01/15 20:56:12 [INFO] Ignoring AWS metadata API endpoint at default location as it doesn't return any instance-id
+2020-01-15T20:56:12.389+0100 [DEBUG] plugin.terraform-provider-aws_v2.44.0_x4: 2020/01/15 20:56:12 [INFO] AWS Auth provider used: "EnvProvider"
+2020-01-15T20:56:12.390+0100 [DEBUG] plugin.terraform-provider-aws_v2.44.0_x4: 2020/01/15 20:56:12 [DEBUG] Trying to get account information via sts:GetCallerIdentity
+2020-01-15T20:56:13.639+0100 [DEBUG] plugin.terraform-provider-aws_v2.44.0_x4: 2020/01/15 20:56:13 [DEBUG] Trying to get account information via sts:GetCallerIdentity
+2020/01/15 20:56:14 [TRACE] [walkPlan] Exiting eval tree: provider.aws
+2020/01/15 20:56:14 [TRACE] dag/walk: walking "aws_vpc.main"
+2020/01/15 20:56:14 [TRACE] vertex 'root.aws_vpc.main': walking
+2020/01/15 20:56:14 [TRACE] vertex 'root.aws_vpc.main': evaluating
+2020/01/15 20:56:14 [TRACE] [walkPlan] Entering eval tree: aws_vpc.main
+2020/01/15 20:56:14 [TRACE] root: eval: *terraform.EvalSequence
+2020/01/15 20:56:14 [TRACE] root: eval: *terraform.EvalInterpolate
+2020/01/15 20:56:14 [TRACE] dag/walk: walking "aws_spot_instance_request.dl_worker"
+2020/01/15 20:56:14 [TRACE] vertex 'root.aws_spot_instance_request.dl_worker': walking
+2020/01/15 20:56:14 [TRACE] vertex 'root.aws_spot_instance_request.dl_worker': evaluating
+2020/01/15 20:56:14 [TRACE] [walkPlan] Entering eval tree: aws_spot_instance_request.dl_worker
+2020/01/15 20:56:14 [TRACE] root: eval: *terraform.EvalSequence
+2020/01/15 20:56:14 [TRACE] root: eval: *terraform.EvalInterpolate
+2020/01/15 20:56:14 [TRACE] root: eval: *terraform.EvalCountCheckComputed
+2020/01/15 20:56:14 [TRACE] root: eval: *terraform.EvalIf
+2020/01/15 20:56:14 [TRACE] root: eval: *terraform.EvalCountFixZeroOneBoundary
+2020/01/15 20:56:14 [TRACE] [walkPlan] Exiting eval tree: aws_vpc.main
+2020/01/15 20:56:14 [TRACE] vertex 'root.aws_vpc.main': expanding/walking dynamic subgraph
+2020/01/15 20:56:14 [TRACE] root: eval: *terraform.EvalCountCheckComputed
+2020/01/15 20:56:14 [TRACE] root: eval: *terraform.EvalIf
+2020/01/15 20:56:14 [TRACE] root: eval: *terraform.EvalCountFixZeroOneBoundary
+2020/01/15 20:56:14 [TRACE] Graph after step *terraform.ResourceCountTransformer:
+
+aws_vpc.main - *terraform.NodePlannableResourceInstance
+2020/01/15 20:56:14 [TRACE] OrphanResourceCount: Starting...
+2020/01/15 20:56:14 [TRACE] Graph after step *terraform.OrphanResourceCountTransformer:
+
+aws_vpc.main - *terraform.NodePlannableResourceInstance
+2020/01/15 20:56:14 [DEBUG] Resource state not found for "aws_vpc.main": aws_vpc.main
+2020/01/15 20:56:14 [TRACE] Graph after step *terraform.AttachStateTransformer:
+
+aws_vpc.main - *terraform.NodePlannableResourceInstance
+2020/01/15 20:56:14 [TRACE] Graph after step *terraform.TargetsTransformer:
+
+aws_vpc.main - *terraform.NodePlannableResourceInstance
+2020/01/15 20:56:14 [DEBUG] ReferenceTransformer: "aws_vpc.main" references: []
+2020/01/15 20:56:14 [TRACE] Graph after step *terraform.ReferenceTransformer:
+
+aws_vpc.main - *terraform.NodePlannableResourceInstance
+2020/01/15 20:56:14 [TRACE] Graph after step *terraform.RootTransformer:
+
+aws_vpc.main - *terraform.NodePlannableResourceInstance
+2020/01/15 20:56:14 [TRACE] dag/walk: added new vertex: "aws_vpc.main"
+2020/01/15 20:56:14 [TRACE] [walkPlan] Exiting eval tree: aws_spot_instance_request.dl_worker
+2020/01/15 20:56:14 [TRACE] vertex 'root.aws_spot_instance_request.dl_worker': expanding/walking dynamic subgraph
+2020/01/15 20:56:14 [TRACE] dag/walk: walking "aws_vpc.main"
+2020/01/15 20:56:14 [TRACE] vertex 'root.aws_vpc.main': walking
+2020/01/15 20:56:14 [TRACE] Graph after step *terraform.ResourceCountTransformer:
+
+aws_spot_instance_request.dl_worker - *terraform.NodePlannableResourceInstance
+2020/01/15 20:56:14 [TRACE] OrphanResourceCount: Starting...
+2020/01/15 20:56:14 [TRACE] Graph after step *terraform.OrphanResourceCountTransformer:
+
+aws_spot_instance_request.dl_worker - *terraform.NodePlannableResourceInstance
+2020/01/15 20:56:14 [DEBUG] Resource state not found for "aws_spot_instance_request.dl_worker": aws_spot_instance_request.dl_worker
+2020/01/15 20:56:14 [TRACE] Graph after step *terraform.AttachStateTransformer:
+
+aws_spot_instance_request.dl_worker - *terraform.NodePlannableResourceInstance
+2020/01/15 20:56:14 [TRACE] vertex 'root.aws_vpc.main': evaluating
+2020/01/15 20:56:14 [TRACE] [walkPlan] Entering eval tree: aws_vpc.main
+2020/01/15 20:56:14 [TRACE] root: eval: *terraform.EvalSequence
+2020/01/15 20:56:14 [TRACE] Graph after step *terraform.TargetsTransformer:
+
+aws_spot_instance_request.dl_worker - *terraform.NodePlannableResourceInstance
+2020/01/15 20:56:14 [TRACE] root: eval: *terraform.EvalInterpolate
+2020/01/15 20:56:14 [DEBUG] ReferenceTransformer: "aws_spot_instance_request.dl_worker" references: []
+2020/01/15 20:56:14 [TRACE] Graph after step *terraform.ReferenceTransformer:
+
+aws_spot_instance_request.dl_worker - *terraform.NodePlannableResourceInstance
+2020/01/15 20:56:14 [TRACE] Graph after step *terraform.RootTransformer:
+
+aws_spot_instance_request.dl_worker - *terraform.NodePlannableResourceInstance
+2020/01/15 20:56:14 [TRACE] dag/walk: added new vertex: "aws_spot_instance_request.dl_worker"
+2020/01/15 20:56:14 [TRACE] dag/walk: walking "aws_spot_instance_request.dl_worker"
+2020/01/15 20:56:14 [TRACE] vertex 'root.aws_spot_instance_request.dl_worker': walking
+2020/01/15 20:56:14 [TRACE] root: eval: *terraform.EvalGetProvider
+2020/01/15 20:56:14 [TRACE] root: eval: *terraform.EvalValidateResource
+2020/01/15 20:56:14 [TRACE] vertex 'root.aws_spot_instance_request.dl_worker': evaluating
+2020/01/15 20:56:14 [TRACE] [walkPlan] Entering eval tree: aws_spot_instance_request.dl_worker
+2020/01/15 20:56:14 [TRACE] root: eval: *terraform.EvalSequence
+2020/01/15 20:56:14 [TRACE] root: eval: *terraform.EvalInterpolate
+2020/01/15 20:56:14 [TRACE] root: eval: *terraform.EvalReadState
+2020/01/15 20:56:14 [TRACE] root: eval: *terraform.EvalDiff
+2020/01/15 20:56:14 [TRACE] root: eval: *terraform.EvalGetProvider
+2020/01/15 20:56:14 [TRACE] root: eval: *terraform.EvalValidateResource
+2020/01/15 20:56:14 [TRACE] root: eval: *terraform.EvalReadState
+2020/01/15 20:56:14 [TRACE] root: eval: *terraform.EvalDiff
+2020-01-15T20:56:14.514+0100 [DEBUG] plugin.terraform-provider-aws_v2.44.0_x4: panic: interface conversion: interface {} is int, not string
+2020-01-15T20:56:14.514+0100 [DEBUG] plugin.terraform-provider-aws_v2.44.0_x4: 
+2020-01-15T20:56:14.514+0100 [DEBUG] plugin.terraform-provider-aws_v2.44.0_x4: goroutine 122 [running]:
+2020-01-15T20:56:14.514+0100 [DEBUG] plugin.terraform-provider-aws_v2.44.0_x4: github.com/hashicorp/terraform-plugin-sdk/helper/schema.(*ResourceTimeout).ConfigDecode(0xc0007dfaa0, 0xc0005a6c80, 0xc0006c8660, 0x57d8160, 0xc00079bb40)
+2020-01-15T20:56:14.514+0100 [DEBUG] plugin.terraform-provider-aws_v2.44.0_x4: 	/opt/teamcity-agent/work/5d79fe75d4460a2f/pkg/mod/github.com/hashicorp/terraform-plugin-sdk@v1.4.1/helper/schema/resource_timeout.go:112 +0xca0
+2020-01-15T20:56:14.514+0100 [DEBUG] plugin.terraform-provider-aws_v2.44.0_x4: github.com/hashicorp/terraform-plugin-sdk/helper/schema.(*Resource).Diff(0xc0005a6c80, 0xc000c34230, 0xc0006c8660, 0x4db1fc0, 0xc0000c4a00, 0xc00003e801, 0xc00079bba8, 0x100bbf6)
+2020-01-15T20:56:14.514+0100 [DEBUG] plugin.terraform-provider-aws_v2.44.0_x4: 	/opt/teamcity-agent/work/5d79fe75d4460a2f/pkg/mod/github.com/hashicorp/terraform-plugin-sdk@v1.4.1/helper/schema/resource.go:324 +0x8c
+2020-01-15T20:56:14.514+0100 [DEBUG] plugin.terraform-provider-aws_v2.44.0_x4: github.com/hashicorp/terraform-plugin-sdk/helper/schema.(*Provider).Diff(0xc00063b580, 0xc000aaf780, 0xc000c34230, 0xc0006c8660, 0xc0006c87b0, 0xc0008bd740, 0x18)
+2020-01-15T20:56:14.514+0100 [DEBUG] plugin.terraform-provider-aws_v2.44.0_x4: 	/opt/teamcity-agent/work/5d79fe75d4460a2f/pkg/mod/github.com/hashicorp/terraform-plugin-sdk@v1.4.1/helper/schema/provider.go:307 +0x99
+2020-01-15T20:56:14.514+0100 [DEBUG] plugin.terraform-provider-aws_v2.44.0_x4: github.com/hashicorp/terraform-plugin-sdk/plugin.(*ResourceProviderServer).Diff(0xc0000a8fc0, 0xc000aef1c0, 0xc000b10ba0, 0x0, 0x0)
+2020-01-15T20:56:14.514+0100 [DEBUG] plugin.terraform-provider-aws_v2.44.0_x4: 	/opt/teamcity-agent/work/5d79fe75d4460a2f/pkg/mod/github.com/hashicorp/terraform-plugin-sdk@v1.4.1/plugin/resource_provider.go:541 +0x57
+2020-01-15T20:56:14.514+0100 [DEBUG] plugin.terraform-provider-aws_v2.44.0_x4: reflect.Value.call(0xc00006cc60, 0xc000096050, 0x13, 0x5f34bad, 0x4, 0xc00079bf18, 0x3, 0x3, 0x0, 0x0, ...)
+2020-01-15T20:56:14.514+0100 [DEBUG] plugin.terraform-provider-aws_v2.44.0_x4: 	/opt/goenv/versions/1.13.5/src/reflect/value.go:460 +0x5f6
+2020-01-15T20:56:14.514+0100 [DEBUG] plugin.terraform-provider-aws_v2.44.0_x4: reflect.Value.Call(0xc00006cc60, 0xc000096050, 0x13, 0xc000876718, 0x3, 0x3, 0x0, 0x11e, 0x0)
+2020-01-15T20:56:14.514+0100 [DEBUG] plugin.terraform-provider-aws_v2.44.0_x4: 	/opt/goenv/versions/1.13.5/src/reflect/value.go:321 +0xb4
+2020-01-15T20:56:14.514+0100 [DEBUG] plugin.terraform-provider-aws_v2.44.0_x4: net/rpc.(*service).call(0xc000080540, 0xc000cb01e0, 0xc000794030, 0xc000794040, 0xc000698180, 0xc000aef0e0, 0x4db0a80, 0xc000aef1c0, 0x16, 0x4db0ac0, ...)
+2020-01-15T20:56:14.515+0100 [DEBUG] plugin.terraform-provider-aws_v2.44.0_x4: 	/opt/goenv/versions/1.13.5/src/net/rpc/server.go:377 +0x16f
+2020-01-15T20:56:14.515+0100 [DEBUG] plugin.terraform-provider-aws_v2.44.0_x4: created by net/rpc.(*Server).ServeCodec
+2020-01-15T20:56:14.515+0100 [DEBUG] plugin.terraform-provider-aws_v2.44.0_x4: 	/opt/goenv/versions/1.13.5/src/net/rpc/server.go:474 +0x42b
+2020/01/15 20:56:14 [ERROR] root: eval: *terraform.EvalDiff, err: unexpected EOF
+2020/01/15 20:56:14 [ERROR] root: eval: *terraform.EvalSequence, err: unexpected EOF
+2020/01/15 20:56:14 [TRACE] [walkPlan] Exiting eval tree: aws_vpc.main
+2020/01/15 20:56:14 [ERROR] root: eval: *terraform.EvalDiff, err: unexpected EOF
+2020/01/15 20:56:14 [ERROR] root: eval: *terraform.EvalSequence, err: unexpected EOF
+2020/01/15 20:56:14 [TRACE] [walkPlan] Exiting eval tree: aws_spot_instance_request.dl_worker
+2020/01/15 20:56:14 [TRACE] dag/walk: upstream errored, not walking "provider.aws (close)"
+2020/01/15 20:56:14 [TRACE] dag/walk: upstream errored, not walking "meta.count-boundary (count boundary fixup)"
+2020/01/15 20:56:14 [TRACE] dag/walk: upstream errored, not walking "root"
+2020-01-15T20:56:14.517+0100 [DEBUG] plugin: plugin process exited: path=/Users/kepler/dvlp/tfm-autoencoders/terraform/.terraform/plugins/darwin_amd64/terraform-provider-aws_v2.44.0_x4
+2020/01/15 20:56:14 [DEBUG] plugin: waiting for all plugin processes to complete...
+2020-01-15T20:56:14.519+0100 [WARN ] plugin: error closing client during Kill: err="connection is shut down"
