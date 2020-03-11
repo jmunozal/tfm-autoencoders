@@ -1,5 +1,6 @@
 from PIL import Image, ImageEnhance
 import os
+from Utils import IMAGE_PATH
 
 def enhance_image(image):
     enhancer = ImageEnhance.Brightness(image)
@@ -40,6 +41,6 @@ def get_rgb_image(file_path, file_name, enhance = False, show = False, save = Fa
         merged_image.save(file_path + os.path.sep + file_name)
 
 
-file = "CELLS_25.tiff"
-path = "/Volumes/My Passport/PFM/output/0_Week1_150607_None_0_1_None_B02"
-get_rgb_image(file_name=file, file_path=path, enhance=True, show=True)
+#file = "Cells_14.tiff"
+file = "Cells_135.tiff"
+get_rgb_image(file_name=file, file_path=IMAGE_PATH, enhance=True, show=True)
