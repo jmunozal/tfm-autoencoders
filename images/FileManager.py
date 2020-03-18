@@ -4,6 +4,7 @@ import csv
 # DMSO csv FILE
 file_path="/Volumes/My Passport/PFM/DMSO.csv"
 raw_files_path="/Volumes/My Passport/PFM/raw_files"
+dmso_paths="/Volumes/My Passport/PFM/dmso_folders.txt"
 delimiter = ";"
 
 def process_csv(file, delim):
@@ -31,4 +32,11 @@ def process_csv(file, delim):
                 line_count += 1
         print(f'Processed {line_count} images.')
 
-process_csv(file_path, delimiter)
+def copy_files():
+    f = open(dmso_paths)
+    for line in f.readlines():
+        print(line)
+
+copy_files()
+
+#process_csv(file_path, delimiter)

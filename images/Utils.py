@@ -1,7 +1,7 @@
 import numpy as np
 from PIL import Image
 
-SEGMENTS_PATH = "/Volumes/My Passport/PFM/output/segments/"
+SEGMENTS_PATH = "/Volumes/My Passport/PFM/output/segments_dmso/"
 
 #https://www.kaggle.com/gauss256/preprocess-images
 def norm_image(img):
