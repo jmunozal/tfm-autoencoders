@@ -1,7 +1,7 @@
 import os
 
 from PIL import Image, ImageEnhance
-from images.Utils import create_dir, RGB_FOLDER, check_root_dir
+from images.Utils import *
 
 
 def enhance_image(image):
@@ -32,6 +32,7 @@ def get_rgb_image(file_path, file_name, enhance = False, show = False, save = Fa
         red_image = Image.open(file_red)
         green_image = Image.open(file_green)
         blue_image = Image.open(file_blue)
+
     except:
         print("some channel does not exist; skipping.")
         return
