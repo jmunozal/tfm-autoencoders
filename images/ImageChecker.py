@@ -1,10 +1,11 @@
-from os import path
-from PIL import Image
-from Utils import SEGMENTS_PATH
 import os
+from os import path
+
 import matplotlib.pyplot as pl
 import numpy as np
-import argparse
+from PIL import Image
+
+from images.Utils import SEGMENTS_PATH
 
 BASE_DIR = "R"
 
