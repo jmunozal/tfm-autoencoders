@@ -1,4 +1,10 @@
 #! /bin/bash
+export AWS_REGION=eu-west-1
 aws s3 cp s3://segments-dmso-resized/copier/s3copier /tmp
-chmod 700 /tmp/s3copier
-/tmp/s3copier -bucket=segments_dmso_resized -baseDir=/dev/sdb -concurrency=200 -queueSize=4000
+sudo chmod 755 /tmp/s3copier
+sudo chown `whoami` /dev/xvdb
+sudo mkfs -t xfs /dev/xvdb
+sudo mkdir /data
+sudo mount /dev/xvdb /data
+sudo chown ubuntu /data
+/tmp/s3copier -bucket=segments-dmso-resized -baseDir=/dev/sdb -concurrency=200 -queueSize=4000

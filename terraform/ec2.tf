@@ -9,6 +9,7 @@ resource "aws_spot_instance_request" "dl_worker" {
   subnet_id     = "${aws_subnet.main.id}"
   key_name      = "jma-spots"
   user_data     = "${file("download_data.sh")}"
+  security_groups             = ["${aws_security_group.allow_ssh.id}"]
   associate_public_ip_address = true
 
   iam_instance_profile="${aws_iam_instance_profile.modeller_profile.name}"
