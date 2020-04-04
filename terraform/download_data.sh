@@ -7,4 +7,4 @@ sudo mkfs -t xfs /dev/xvdb
 sudo mkdir /data
 sudo mount /dev/xvdb /data
 sudo chown ubuntu /data
-/tmp/s3copier -bucket=segments-dmso-resized -baseDir=/dev/sdb -concurrency=200 -queueSize=4000
+/tmp/s3copier -bucket=tfm-images-cells -baseDir=/data -concurrency=200 -queueSize=4000
