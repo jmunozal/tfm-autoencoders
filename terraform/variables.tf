@@ -25,3 +25,4 @@ variable "instance_type" {
 variable "device_name" {
   type = "string"
 }
+
