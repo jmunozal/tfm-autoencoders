@@ -3,3 +3,4 @@
 */.terraform/*
 *.backup
 *.pyc
+*/.ipynb_checkpoints/*
