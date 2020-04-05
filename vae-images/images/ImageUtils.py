@@ -1,3 +1,4 @@
+import glob
 import os
 
 from PIL import Image, ImageEnhance
@@ -18,6 +19,14 @@ def create_rgb_images(folder):
         if check_root_dir(root):
             for file in os.listdir(''.join([root, os.sep, "R"])):
                 get_rgb_image(root, file, enhance=True, show=False, save=True)
+
+def create_png_images(folder, dest_folder):
+    for file in glob.glob(''.join([folder, os.sep, "*.tiff"])):
+        #print (file)
+        #print (os.path.splitext(file)[0] + '.png')
+        png_filename = os.path.basename(os.path.splitext(file)[0] + '.png')
+        im = Image.open(file)
+        im.save(''.join([dest_folder, os.sep, png_filename]))
 
 
 def get_rgb_image(file_path, file_name, enhance = False, show = False, save = False):
