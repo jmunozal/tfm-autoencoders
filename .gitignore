@@ -4,3 +4,4 @@
 *.backup
 *.pyc
 */.ipynb_checkpoints/*
+terraform.tfstate
