@@ -80,16 +80,16 @@ class VariationalAutoencoder():
         x = conv_layer_2(x)
         x = LeakyReLU()(x)
 
-#        conv_layer_3 = Conv2D(
-#            filters=64
-#            , kernel_size=3
-#            , strides=2
-#            , padding='same'
-#            , name='encoder_conv_3'
-#        )
+        conv_layer_3 = Conv2D(
+            filters=64
+            , kernel_size=3
+            , strides=2
+            , padding='same'
+            , name='encoder_conv_3'
+        )
 
-#        x = conv_layer_3(x)
-#        x = LeakyReLU()(x)
+        x = conv_layer_3(x)
+        x = LeakyReLU()(x)
 
         shape_before_flattening = K.int_shape(x)[1:]
 
@@ -97,7 +97,7 @@ class VariationalAutoencoder():
 
         flatten_size = K.int_shape(x)[1:]
 
-        x = Dense(1024, name='outpost', activation='relu')(x)
+        x = Dense(4096, name='outpost', activation='relu')(x)
 
         self.mu = Dense(self.z_dim, name='mu')(x)
         self.log_var = Dense(self.z_dim, name='log_var')(x)
@@ -117,22 +117,22 @@ class VariationalAutoencoder():
 
         decoder_input = Input(shape=(self.z_dim,), name='decoder_input')
 
-        x = Dense(1024, activation= 'relu')(decoder_input)
+        x = Dense(4096, activation= 'relu')(decoder_input)
 
         x = Dense(flatten_size[0], activation='relu')(x) #hortera
 
         x = Reshape(shape_before_flattening)(x)
 
-#        conv_t_layer_3b = Conv2DTranspose(
-#            filters=64
-#            , kernel_size=3
-#            , strides=2
-#            , padding='same'
-#            , name='decoder_conv_t_3b'
-#        )
+        conv_t_layer_3b = Conv2DTranspose(
+            filters=64
+            , kernel_size=3
+            , strides=2
+            , padding='same'
+            , name='decoder_conv_t_3b'
+        )
 
-#        x = conv_t_layer_3b(x)
-#        x = LeakyReLU()(x)
+        x = conv_t_layer_3b(x)
+        x = LeakyReLU()(x)
 
         conv_t_layer_2b = Conv2DTranspose(
             filters=64
