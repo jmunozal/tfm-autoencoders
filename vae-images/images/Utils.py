@@ -1,4 +1,5 @@
 import os
+import random
 import shutil
 
 import pathlib
@@ -81,3 +82,9 @@ def copy_rgb_files(rgb_path, dest_folder):
                 ifile = ''.join([rgb_folder, os.sep, 'RGB', os.sep, filename])
                 ofile = ''.join([dest_folder, os.sep, image_filename])
                 shutil.copy(ifile, ofile)
+
+def choose_random_files(folder, nfiles):
+    file_list = []
+    for i in range(nfiles):
+        file_list.append(random.choice(os.listdir(folder)))
+    return file_list

@@ -1,4 +1,6 @@
+import random
 from glob import glob
+from shutil import copyfile
 
 from keras.layers import Input, Conv2D, Flatten, Dense, Conv2DTranspose, Reshape, Lambda, Activation, \
     BatchNormalization, LeakyReLU, Dropout
@@ -9,6 +11,7 @@ from keras.callbacks import ModelCheckpoint
 from keras.utils import plot_model
 from keras_preprocessing.image import ImageDataGenerator
 
+from images.Utils import choose_random_files
 from utils.callbacks import CustomCallback, step_decay_schedule
 
 import numpy as np
@@ -23,6 +26,9 @@ class VariationalAutoencoder():
     INPUT_DIM = (128, 128, 3)
 
     def __init__(self
+                 , image_folder
+                 , run_folder
+                 , images_to_generate = 5
                  , input_dim = INPUT_DIM
 #                 , encoder_conv_filters
 #                 , encoder_conv_kernel_size
@@ -36,6 +42,8 @@ class VariationalAutoencoder():
                  ):
         self.name = 'variational_autoencoder'
 
+        self.run_folder = run_folder
+
         self.input_dim = self.INPUT_DIM
 #        self.encoder_conv_filters = encoder_conv_filters
 #        self.encoder_conv_kernel_size = encoder_conv_kernel_size
@@ -47,9 +55,17 @@ class VariationalAutoencoder():
 
         self.use_batch_norm = use_batch_norm
         self.use_dropout = use_dropout
+        self.images_to_generate = images_to_generate
+        self.image_folder = image_folder
 
  #       self.n_layers_encoder = len(encoder_conv_filters)
  #       self.n_layers_decoder = len(decoder_conv_t_filters)
+
+        self.init_dirs()
+
+        imgs = os.sep.join([image_folder, 'training'])
+        self.image_files_generate = choose_random_files(folder=imgs, nfiles=self.images_to_generate)
+        self.save_original_images()
 
         self._build()
 
@@ -139,7 +155,6 @@ class VariationalAutoencoder():
         if self.use_dropout:
             x = Dropout(rate=0.25)(x)
 
-
         conv_t_layer_2b = Conv2DTranspose(
             filters=64
             , kernel_size=3
@@ -203,7 +218,7 @@ class VariationalAutoencoder():
     def train_with_generator(self, data_flow, epochs, steps_per_epoch, run_folder, print_every_n_batches=100,
                              initial_epoch=0, lr_decay=1, ):
 
-        custom_callback = CustomCallback(run_folder, print_every_n_batches, initial_epoch, self)
+        custom_callback = CustomCallback(run_folder, print_every_n_batches, initial_epoch, self, self.image_folder, self.image_files_generate)
         lr_sched = step_decay_schedule(initial_lr=self.learning_rate, decay_factor=lr_decay, step_size=1)
 
         checkpoint_filepath = os.path.join(run_folder, "weights/weights-{epoch:03d}-{loss:.2f}.h5")
@@ -234,3 +249,15 @@ class VariationalAutoencoder():
         with open(run_folder + '/viz/decoder.txt', 'w') as fh:
             self.decoder.summary(print_fn=lambda x: fh.write(x + '\n'))
 
+    def save_original_images(self):
+        for image in self.image_files_generate:
+            im_source = os.sep.join([self.image_folder, 'training', image])
+            im_dest = os.sep.join([self.run_folder, 'images', image])
+            copyfile(im_source, im_dest)
+
+    def init_dirs(self):
+        if not os.path.exists(self.run_folder):
+            os.mkdir(self.run_folder)
+            os.mkdir(os.path.join(self.run_folder, 'viz'))
+            os.mkdir(os.path.join(self.run_folder, 'images'))
+            os.mkdir(os.path.join(self.run_folder, 'weights'))
