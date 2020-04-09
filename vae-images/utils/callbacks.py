@@ -41,7 +41,6 @@ class CustomCallback(Callback):
     def predict_samples(self, epoch):
         suffix = str(self.epoch).zfill(3) + '_' + str(epoch)
         for i in self.images_files:
-            print(i)
             filename = i.split('.')[0]
             filename = '_'.join([filename, suffix])
             print(os.sep.join([self.images_folder, i]))
