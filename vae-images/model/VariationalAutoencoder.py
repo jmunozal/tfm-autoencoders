@@ -31,8 +31,8 @@ class VariationalAutoencoder():
 #                 , decoder_conv_t_kernel_size
 #                 , decoder_conv_t_strides
                  , z_dim = 200
-                 , use_batch_norm=False
-                 , use_dropout=False
+                 , use_batch_norm=True
+                 , use_dropout=True
                  ):
         self.name = 'variational_autoencoder'
 
@@ -65,9 +65,12 @@ class VariationalAutoencoder():
             , padding='same'
             , name='encoder_conv_1'
         )
-
         x = conv_layer_1(x)
+        if self.use_batch_norm:
+            x = BatchNormalization()(x)
         x = LeakyReLU()(x)
+        if self.use_dropout:
+            x = Dropout(rate=0.25)(x)
 
         conv_layer_2 = Conv2D(
             filters=64
@@ -76,9 +79,12 @@ class VariationalAutoencoder():
             , padding='same'
             , name='encoder_conv_2'
         )
-
         x = conv_layer_2(x)
+        if self.use_batch_norm:
+            x = BatchNormalization()(x)
         x = LeakyReLU()(x)
+        if self.use_dropout:
+            x = Dropout(rate=0.25)(x)
 
         conv_layer_3 = Conv2D(
             filters=64
@@ -87,17 +93,16 @@ class VariationalAutoencoder():
             , padding='same'
             , name='encoder_conv_3'
         )
-
         x = conv_layer_3(x)
+        if self.use_batch_norm:
+            x = BatchNormalization()(x)
         x = LeakyReLU()(x)
+        if self.use_dropout:
+            x = Dropout(rate=0.25)(x)
 
         shape_before_flattening = K.int_shape(x)[1:]
-
         x = Flatten()(x)
-
-        flatten_size = K.int_shape(x)[1:]
-
-        x = Dense(4096, name='outpost', activation='relu')(x)
+        #flatten_size = K.int_shape(x)[1:]
 
         self.mu = Dense(self.z_dim, name='mu')(x)
         self.log_var = Dense(self.z_dim, name='log_var')(x)
@@ -117,10 +122,7 @@ class VariationalAutoencoder():
 
         decoder_input = Input(shape=(self.z_dim,), name='decoder_input')
 
-        x = Dense(4096, activation= 'relu')(decoder_input)
-
-        x = Dense(flatten_size[0], activation='relu')(x) #hortera
-
+        x = Dense(np.prod(shape_before_flattening))(decoder_input)
         x = Reshape(shape_before_flattening)(x)
 
         conv_t_layer_3b = Conv2DTranspose(
@@ -130,9 +132,13 @@ class VariationalAutoencoder():
             , padding='same'
             , name='decoder_conv_t_3b'
         )
-
         x = conv_t_layer_3b(x)
+        if self.use_batch_norm:
+            x = BatchNormalization()(x)
         x = LeakyReLU()(x)
+        if self.use_dropout:
+            x = Dropout(rate=0.25)(x)
+
 
         conv_t_layer_2b = Conv2DTranspose(
             filters=64
@@ -141,9 +147,12 @@ class VariationalAutoencoder():
             , padding='same'
             , name='decoder_conv_t_2b'
         )
-
         x = conv_t_layer_2b(x)
+        if self.use_batch_norm:
+            x = BatchNormalization()(x)
         x = LeakyReLU()(x)
+        if self.use_dropout:
+            x = Dropout(rate=0.25)(x)
 
         conv_t_layer_1b = Conv2DTranspose(
             filters=32
@@ -152,13 +161,16 @@ class VariationalAutoencoder():
             , padding='same'
             , name='decoder_conv_t_1b'
         )
-
         x = conv_t_layer_1b(x)
+        if self.use_batch_norm:
+            x = BatchNormalization()(x)
         x = LeakyReLU()(x)
+        if self.use_dropout:
+            x = Dropout(rate=0.25)(x)
 
-        decoder_output = Conv2DTranspose(
-            filters=3, kernel_size=3, strides=1, padding="same") (x),
-
+        conv_t_layer_0b = Conv2DTranspose(filters=3, kernel_size=3, strides=1, padding='same', name='decoder_conv_t_0b')
+        x = conv_t_layer_0b(x)
+        decoder_output = Activation('sigmoid')(x)
 
         self.decoder = Model(decoder_input, decoder_output)
 
@@ -191,14 +203,14 @@ class VariationalAutoencoder():
     def train_with_generator(self, data_flow, epochs, steps_per_epoch, run_folder, print_every_n_batches=100,
                              initial_epoch=0, lr_decay=1, ):
 
-        #custom_callback = CustomCallback(run_folder, print_every_n_batches, initial_epoch, self)
+        custom_callback = CustomCallback(run_folder, print_every_n_batches, initial_epoch, self)
         lr_sched = step_decay_schedule(initial_lr=self.learning_rate, decay_factor=lr_decay, step_size=1)
 
         checkpoint_filepath = os.path.join(run_folder, "weights/weights-{epoch:03d}-{loss:.2f}.h5")
         checkpoint1 = ModelCheckpoint(checkpoint_filepath, save_weights_only=True, verbose=1)
         checkpoint2 = ModelCheckpoint(os.path.join(run_folder, 'weights/weights.h5'), save_weights_only=True, verbose=1)
 
-        callbacks_list = [checkpoint1, checkpoint2, lr_sched]
+        callbacks_list = [checkpoint1, checkpoint2, lr_sched, custom_callback]
 
         self.model.save_weights(os.path.join(run_folder, 'weights/weights.h5'))
 
@@ -210,3 +222,15 @@ class VariationalAutoencoder():
             , callbacks=callbacks_list
             , steps_per_epoch=steps_per_epoch
         )
+
+        self.print_model(run_folder)
+
+    def print_model(self, run_folder):
+
+        with open(run_folder + '/viz/model.txt', 'w') as fh:
+            self.model.summary(print_fn=lambda x: fh.write(x + '\n'))
+        with open(run_folder + '/viz/encoder.txt', 'w') as fh:
+            self.encoder.summary(print_fn=lambda x: fh.write(x + '\n'))
+        with open(run_folder + '/viz/decoder.txt', 'w') as fh:
+            self.decoder.summary(print_fn=lambda x: fh.write(x + '\n'))
+
