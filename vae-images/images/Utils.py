@@ -86,5 +86,8 @@ def copy_rgb_files(rgb_path, dest_folder):
 def choose_random_files(folder, nfiles):
     file_list = []
     for i in range(nfiles):
-        file_list.append(random.choice(os.listdir(folder)))
+        filename = random.choice(os.listdir(folder))
+        if filename == '.DS_Store':
+            filename = choose_random_files(folder, 1)
+        file_list.append(filename)
     return file_list

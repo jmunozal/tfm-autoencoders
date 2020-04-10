@@ -19,7 +19,7 @@ import json
 import os
 import pickle
 
-
+import matplotlib.pyplot as plt
 
 class VariationalAutoencoder():
 
@@ -229,7 +229,7 @@ class VariationalAutoencoder():
 
         self.model.save_weights(os.path.join(run_folder, 'weights/weights.h5'))
 
-        self.model.fit_generator(
+        history = self.model.fit_generator(
             data_flow
             , shuffle=True
             , epochs=epochs
@@ -238,7 +238,9 @@ class VariationalAutoencoder():
             , steps_per_epoch=steps_per_epoch
         )
 
+        self.acuracy_loss(history=history)
         self.print_model(run_folder)
+
 
     def print_model(self, run_folder):
 
@@ -250,14 +252,29 @@ class VariationalAutoencoder():
             self.decoder.summary(print_fn=lambda x: fh.write(x + '\n'))
 
     def save_original_images(self):
+
         for image in self.image_files_generate:
             im_source = os.sep.join([self.image_folder, 'training', image])
             im_dest = os.sep.join([self.run_folder, 'images', image])
             copyfile(im_source, im_dest)
 
     def init_dirs(self):
+
         if not os.path.exists(self.run_folder):
             os.mkdir(self.run_folder)
             os.mkdir(os.path.join(self.run_folder, 'viz'))
             os.mkdir(os.path.join(self.run_folder, 'images'))
             os.mkdir(os.path.join(self.run_folder, 'weights'))
+            os.mkdir(os.path.join(self.run_folder, 'plots'))
+
+    def acuracy_loss(self, history):
+
+        savefolder = os.sep.join([self.run_folder, '/plots'])
+
+        # Plot training & validation loss values
+        plt.plot(history.history['loss'])
+        plt.title('Model loss')
+        plt.ylabel('Loss')
+        plt.xlabel('Epoch')
+        plt.legend(['Train'], loc='upper left')
+        plt.savefig(os.sep.join([savefolder, 'loss.png']))

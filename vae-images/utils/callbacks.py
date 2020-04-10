@@ -18,7 +18,7 @@ class CustomCallback(Callback):
         self.images_folder = images_folder
         self.images_files = images_files
 
-        print(*images_files)
+#        print(*images_files)
 
 #    def on_batch_end(self, batch, logs={}):
 #        if batch % self.print_every_n_batches == 0:
@@ -43,7 +43,6 @@ class CustomCallback(Callback):
         for i in self.images_files:
             filename = i.split('.')[0]
             filename = '_'.join([filename, suffix])
-            print(os.sep.join([self.images_folder, i]))
             img = Image.open(os.sep.join([self.images_folder, 'training', i]))
             array_img = img_to_array(img)  # keras
             array_img = np.expand_dims(array_img, axis=0)
