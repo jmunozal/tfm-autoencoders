@@ -26,6 +26,7 @@ class VariationalAutoencoder():
     INPUT_DIM = (128, 128, 3)
 
     def __init__(self
+                 , train_mode
                  , image_folder
                  , run_folder
                  , images_to_generate = 5
@@ -43,6 +44,7 @@ class VariationalAutoencoder():
         self.name = 'variational_autoencoder'
 
         self.run_folder = run_folder
+        self.train_mode = train_mode
 
         self.input_dim = self.INPUT_DIM
 #        self.encoder_conv_filters = encoder_conv_filters
@@ -61,11 +63,13 @@ class VariationalAutoencoder():
  #       self.n_layers_encoder = len(encoder_conv_filters)
  #       self.n_layers_decoder = len(decoder_conv_t_filters)
 
-        self.init_dirs()
+        if self.train_mode:
 
-        imgs = os.sep.join([image_folder, 'training'])
-        self.image_files_generate = choose_random_files(folder=imgs, nfiles=self.images_to_generate)
-        self.save_original_images()
+            self.init_dirs()
+
+            imgs = os.sep.join([image_folder, 'training'])
+            self.image_files_generate = choose_random_files(folder=imgs, nfiles=self.images_to_generate)
+            self.save_original_images()
 
         self._build()
 
