@@ -3,9 +3,9 @@ import os
 
 from PIL import Image, ImageEnhance
 from images.Utils import *
-from PIL import Image
-from PIL.TiffTags import TAGS
+from matplotlib import pyplot as plt
 
+from PIL import Image
 
 def enhance_image(image):
     enhancer = ImageEnhance.Brightness(image)
@@ -80,3 +80,24 @@ def resize(path, new_width = 128, new_height = 128):
     im = im.crop((left, top, right, bottom))
 
     return im
+
+def show_histogram(pathimage):
+
+    def RED(R): return '#%02x%02x%02x'%(R,0,0)
+    def GREEN(G): return '#%02x%02x%02x'%(0,G,0)
+    def BLUE(B):return '#%02x%02x%02x'%(0,0,B)
+    i=Image.open(pathimage)
+    hst=i.histogram()
+    l1=hst[0:256]      # indicates Red
+    l2=hst[256:512]  # indicated Green
+    l3=hst[512:768]   # indicates Blue
+    plt.figure(0)
+    for i in range(0, 256):
+        plt.bar(i, l1[i], color = 'red',alpha=1)
+    plt.figure(1)
+    for i in range(0, 256):
+        plt.bar(i, l2[i], color = 'green',alpha=1)
+    plt.figure(2)
+    for i in range(0, 256):
+        plt.bar(i, l3[i], color = 'blue',alpha=1)
+    plt.show()
