@@ -8,4 +8,4 @@ sudo mkdir /data
 sudo mount /dev/xvdb /data
 sudo chown ubuntu /data
 sudo pip install pydot
-#/tmp/s3copier -bucket=tfm-images-cells -baseDir=/data -concurrency=200 -queueSize=4000
+/tmp/s3copier -bucket=tfm-images-cells -baseDir=/data

@@ -55,13 +55,3 @@ for root, dirs, f in os.walk(SEGMENTS_PATH, topdown=False):
                     if max_s < 250:
                         M = np.append(M, max_s)
                         mis = max([mis, max([width_r, height_r])])
-
-
-print("Total number of vae-images: " + str(len(M)))
-print("Max image size: " + str(mis))
-print("Image average size: " + str(np.average(M)))
-fig = pl.hist(M, bins=500, density=0)
-pl.title('Size Histogram')
-pl.xlabel("max image width/height")
-pl.ylabel("n")
-pl.savefig("histogram.png")
