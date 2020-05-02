@@ -13,12 +13,12 @@ def calculate_metrics(vae, path):
         image = Image.open(image_)
         predicted = predict(image= image, vae=vae)
         diff += get_diff(image, predicted)
-        images += images
+        images += 1
 
     set_val = diff / images
 
-    print('Total number of images: ' + images)
-    print('Value of the metrics: ' + images)
+    print('Total number of images: ', images)
+    print('Value of the metrics: ', set_val)
 
 def predict(image, vae):
 
