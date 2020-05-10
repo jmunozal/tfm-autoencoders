@@ -189,7 +189,8 @@ class VariationalAutoencoder():
 
         conv_t_layer_0b = Conv2DTranspose(filters=3, kernel_size=3, strides=1, padding='same', name='decoder_conv_t_0b')
         x = conv_t_layer_0b(x)
-        decoder_output = Activation('sigmoid')(x)
+        #decoder_output = Activation('sigmoid')(x)
+        decoder_output = x
 
         self.decoder = Model(decoder_input, decoder_output)
 
