@@ -4,6 +4,7 @@ import shutil
 
 import pathlib
 from PIL import Image
+from keras_preprocessing.image import ImageDataGenerator
 
 from images.ImageUtils import resize
 
@@ -91,3 +92,35 @@ def choose_random_files(folder, nfiles):
             filename = choose_random_files(folder, 1)
         file_list.append(filename)
     return file_list
+
+class ImageLabelLoader():
+    def __init__(self, image_folder, target_size):
+        self.image_folder = image_folder
+        self.target_size = target_size
+
+    def build(self, att, batch_size, label = None):
+
+        data_gen = ImageDataGenerator(rescale=1./255)
+        if label:
+            data_flow = data_gen.flow_from_dataframe(
+                att
+                , self.image_folder
+                , x_col='image_id'
+                , y_col=label
+                , target_size=self.target_size
+                , class_mode='other'
+                , batch_size=batch_size
+                , shuffle=True
+            )
+        else:
+            data_flow = data_gen.flow_from_dataframe(
+                att
+                , self.image_folder
+                , x_col='image_id'
+                , target_size=self.target_size
+                , class_mode='input'
+                , batch_size=batch_size
+                , shuffle=True
+            )
+
+        return data_flow

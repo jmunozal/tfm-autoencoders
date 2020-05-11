@@ -2,6 +2,7 @@ import random
 from glob import glob
 from shutil import copyfile
 
+import keras
 from keras.layers import Input, Conv2D, Flatten, Dense, Conv2DTranspose, Reshape, Lambda, Activation, \
     BatchNormalization, LeakyReLU, Dropout
 from keras.models import Model
@@ -246,6 +247,46 @@ class VariationalAutoencoder():
         self.acuracy_loss(history=history)
         self.print_model(run_folder)
 
+    def train(self, batch_size, epochs, run_folder, directory, print_every_n_batches=100, initial_epoch=0,
+              lr_decay=1):
+
+        x_train = keras.preprocessing.image_dataset_from_directory(
+            directory,
+            labels="inferred",
+            label_mode="int",
+            class_names=None,
+            color_mode="rgb",
+            batch_size=32,
+            image_size=(128, 128),
+            shuffle=True,
+            seed=None,
+            validation_split=None,
+            subset=None,
+            interpolation="bilinear",
+            follow_links=False,
+        )
+
+
+        custom_callback = CustomCallback(run_folder, print_every_n_batches, initial_epoch, self)
+        lr_sched = step_decay_schedule(initial_lr=self.learning_rate, decay_factor=lr_decay, step_size=1)
+
+        checkpoint_filepath = os.path.join(run_folder, "weights/weights-{epoch:03d}-{loss:.2f}.h5")
+        checkpoint1 = ModelCheckpoint(checkpoint_filepath, save_weights_only=True, verbose=1)
+        checkpoint2 = ModelCheckpoint(os.path.join(run_folder, 'weights/weights.h5'), save_weights_only=True,
+                                      verbose=1)
+
+        callbacks_list = [checkpoint1, checkpoint2, custom_callback, lr_sched]
+
+        self.model.fit(
+            x_train
+            , x_train
+            , batch_size=batch_size
+            , shuffle=True
+            , epochs=epochs
+            , initial_epoch=initial_epoch
+            , callbacks=callbacks_list
+        )
+
 
     def print_model(self, run_folder):
 
@@ -271,6 +312,20 @@ class VariationalAutoencoder():
             os.mkdir(os.path.join(self.run_folder, 'images'))
             os.mkdir(os.path.join(self.run_folder, 'weights'))
             os.mkdir(os.path.join(self.run_folder, 'plots'))
+
+        with open(os.path.join(self.run_folder, 'params.pkl'), 'wb') as f:
+            pickle.dump([
+                self.input_dim
+                , self.encoder_conv_filters
+                , self.encoder_conv_kernel_size
+                , self.encoder_conv_strides
+                , self.decoder_conv_t_filters
+                , self.decoder_conv_t_kernel_size
+                , self.decoder_conv_t_strides
+                , self.z_dim
+                , self.use_batch_norm
+                , self.use_dropout
+                ], f)
 
     def acuracy_loss(self, history):
 
