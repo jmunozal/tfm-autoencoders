@@ -316,12 +316,12 @@ class VariationalAutoencoder():
         with open(os.path.join(self.run_folder, 'params.pkl'), 'wb') as f:
             pickle.dump([
                 self.input_dim
-                , self.encoder_conv_filters
-                , self.encoder_conv_kernel_size
-                , self.encoder_conv_strides
-                , self.decoder_conv_t_filters
-                , self.decoder_conv_t_kernel_size
-                , self.decoder_conv_t_strides
+                , [32, 64, 64]
+                , [3, 3, 3]
+                , [2, 2, 2]
+                , [64, 64, 32, 3]
+                , [3, 3, 3, 3]
+                , [2, 2, 2, 1]
                 , self.z_dim
                 , self.use_batch_norm
                 , self.use_dropout
