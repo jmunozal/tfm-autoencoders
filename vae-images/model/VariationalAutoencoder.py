@@ -315,13 +315,11 @@ class VariationalAutoencoder():
 
         with open(os.path.join(self.run_folder, 'params.pkl'), 'wb') as f:
             pickle.dump([
-                self.input_dim
-                , [32, 64, 64]
-                , [3, 3, 3]
-                , [2, 2, 2]
-                , [64, 64, 32, 3]
-                , [3, 3, 3, 3]
-                , [2, 2, 2, 1]
+                False
+                , self.image_folder
+                , self.run_folder
+                , 5
+                , self.INPUT_DIM
                 , self.z_dim
                 , self.use_batch_norm
                 , self.use_dropout
