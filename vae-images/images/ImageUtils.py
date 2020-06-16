@@ -22,8 +22,6 @@ def create_rgb_images(folder):
 
 def create_png_images(folder, dest_folder):
     for file in glob.glob(''.join([folder, os.sep, "*.tiff"])):
-        #print (file)
-        #print (os.path.splitext(file)[0] + '.png')
         png_filename = os.path.basename(os.path.splitext(file)[0] + '.png')
         im = Image.open(file)
         im.save(''.join([dest_folder, os.sep, png_filename]))

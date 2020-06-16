@@ -6,7 +6,7 @@ import keras
 from keras.layers import Input, Conv2D, Flatten, Dense, Conv2DTranspose, Reshape, Lambda, Activation, \
     BatchNormalization, LeakyReLU, Dropout
 from keras.models import Model
-from keras import backend as K
+from keras import backend as K, Model
 from keras.optimizers import Adam
 from keras.callbacks import ModelCheckpoint
 from keras.utils import plot_model
@@ -24,6 +24,7 @@ import matplotlib.pyplot as plt
 
 class VariationalAutoencoder():
 
+    model: Model
     INPUT_DIM = (128, 128, 3)
 
     def __init__(self
